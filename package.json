@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "Render html, whatever, to pure react and react native. ",
   "main": "dist/index.js",
-  "module": "dist/astly.esm.js",
+  "module": "dist/main.umd.development.js",
   "react-native": "dist/main.native.umd.production.js",
   "sideEffects": false,
   "files": [

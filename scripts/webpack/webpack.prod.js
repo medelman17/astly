@@ -8,7 +8,8 @@ function getOutput(opts) {
       return {
         filename:
           opts.buildFor === "native" ? `astly.native.esm.js` : `astly.esm.js`,
-        path: path.resolve(__dirname, "../../", opts.path)
+        path: path.resolve(__dirname, "../../", opts.path),
+        globalObject: "typeof self !== 'undefined' ? self : this"
       };
     default:
       return {

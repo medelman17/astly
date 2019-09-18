@@ -8,7 +8,14 @@
 
 import React, {Fragment} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
-import {Box as View, Text, styled, isNative} from '@fabulas/astly';
+import {
+  Box as View,
+  Text,
+  styled,
+  isNative,
+  RenderTree,
+  ComponentMap,
+} from '@fabulas/astly';
 
 const SectionContainer = styled(View)`
   background-color: blue;
@@ -22,6 +29,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+const testTree = `<div id="newRoot" style="display: flex; flex-direction: row; justify-content: space-around"><div bg="blue" color="white" width="25%" p="3"><p>Test</p></div><div bg="blue" width="25%" p="3" color="white"><p>Test</p></div><div bg="blue" color="white" width="25%" p="3"><p>Test</p></div><div bg="blue" color="white" width="25%" p="3"><p>Test</p></div></div>`;
+
 const App = () => {
   return (
     <Fragment>
@@ -31,6 +40,7 @@ const App = () => {
           as={isNative ? ScrollView : 'div'}
           contentInsetAdjustmentBehavior="automatic">
           {/* <Header /> */}
+          <RenderTree tree={testTree} />
           <View bg="blue">
             <SectionContainer>
               <Text fontSize={24} fontWeight={600} color="white">

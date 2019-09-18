@@ -1,0 +1,40 @@
+{
+  "name": "@fabulas/astly",
+  "version": "0.0.1",
+  "description": "Render html, whatever, to pure react and react native. ",
+  "main": "dist/index.js",
+  "module": "dist/astly.esm.js",
+  "react-native": "dist/main.native.umd.production.js",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config ./webpack.config.js --env.env=prod",
+    "build:clean": "rm -rf ./dist",
+    "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
+    "prebuild": "npm run build:clean"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-native": ">=0.59"
+  },
+  "author": "Michael Jopseph Edelman <michael@fabulas.io>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.6.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "dotenv-webpack": "^1.7.0",
+    "react": "^16.9.0",
+    "react-native": "^0.59.4",
+    "styled-components": "^4.3.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-merge": "^4.2.2"
+  }
+}

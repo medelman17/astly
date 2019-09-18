@@ -33,6 +33,10 @@ function App() {
 export default App;
 ```
 
+### Universal Components
+
+...coming soon. See below for now.
+
 ## Why Astly?
 
 ### Composable
@@ -98,6 +102,8 @@ For example:
     }}
 />
 ```
+
+We also expose another, soon-to-be-renamed prop on `RenderTree` called `inspectNewChildren`...that allows for last-minute transformation and or manipulation of what `RenderTree` wants to render. You could think of it as a render-prop. See [here](https://reactjs.org/docs/react-api.html) for likely use cases.
 
 <!-- Definitions -->
 

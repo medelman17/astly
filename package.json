@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Render html, whatever, to pure react and react native. ",
   "main": "dist/index.js",
   "module": "dist/astly.esm.js",
@@ -33,6 +33,8 @@
     "react": "^16.9.0",
     "react-native": "^0.59.4",
     "styled-components": "^4.3.2",
+    "styled-components-modifiers": "^1.2.4",
+    "styled-system": "^5.1.2",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-merge": "^4.2.2"

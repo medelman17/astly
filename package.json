@@ -32,9 +32,12 @@
     "dotenv-webpack": "^1.7.0",
     "react": "^16.9.0",
     "react-native": "^0.59.4",
+    "rehype-parse": "^6.0.1",
+    "rehype-react": "^4.0.1",
     "styled-components": "^4.3.2",
     "styled-components-modifiers": "^1.2.4",
     "styled-system": "^5.1.2",
+    "unified": "^8.4.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-merge": "^4.2.2"

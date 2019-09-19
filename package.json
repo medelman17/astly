@@ -22,7 +22,8 @@
     "build": "webpack --config ./webpack.config.js --env.env=prod",
     "build:clean": "rm -rf ./dist",
     "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
-    "prebuild": "npm run build:clean"
+    "prebuild": "npm run build:clean",
+    "postbuild": "./scripts/postbuild/postbuild.sh"
   },
   "peerDependencies": {
     "react": ">=16.8",

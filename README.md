@@ -1,8 +1,9 @@
 # 🌲 🌲 Astly 🌲 🌲
 
-Astly is a VERY EARLY STAGE javascript library for rendering static content (e.g., html) into react components that work on web and native. It's also a primitive UI library that could be used to build custom, platform-agnostic components. Powered by the [`Unified`](https://github.com/unifiedjs/unified) ecosystem, [`Styled Components`](https://github.com/styled-components/styled-components), [`Styled System`](https://github.com/styled-system/styled-system), and [`React`](https://github.com/facebook/react)
+Astly is a VERY EARLY STAGE javascript library for rendering static content (e.g., html) into react components that work on web and native. It's also a primitive UI library that could be used to build custom, platform-agnostic components. Powered by the [`Unified`](https://github.com/unifiedjs/unified) ecosystem, [`Styled Components`](https://github.com/styled-components/styled-components), [`Styled System`](https://github.com/styled-system/styled-system), and [`React`](https://github.com/facebook/react).
 
-You write something like: 
+You write something like:
+
 ```
 import React from "react";
 import logo from "./logo.svg";
@@ -13,18 +14,20 @@ function App() {
     return <RenderTree tree={tree} />
 }
 
-// where tree is soemthing like: 
+// where tree is soemthing like:
 
 const testTree = `<div class="App" ><header minHeight="100vh" style="display: flex; justify-content: center; align-items: center; flex-direction: column;" bg="#282c34" minHeight="100vh" class="App-header"><img height="40vmin" src=${logo} source=${logo} class="App-logo" alt="logo"/><p color="white">Edit src/App.js and save to reload.</p><div><a class="App-link" href="https://fabulas.io" color="white"><p>Fabulas Link</p></a></div></headerclass="App-header"></div>`;
 
 ```
-You get something like: 
+
+You get something like:
 
 | Web                    | Native                    |
 | :--------------------- | :------------------------ |
 | ![web view][webresult] | ![web view][nativeresult] |
 |                        |                           |
 
+Give it try [here](https://codesandbox.io/s/astly-demo-p6l39)
 
 ## Installation
 
@@ -38,26 +41,25 @@ or
 
 ## Astly: The Syntax-Tree Bits
 
-Right now, Astly provides limited parsing support for html out of the box. It works like this: 
+Right now, Astly provides limited parsing support for html out of the box. It works like this:
 
-(1) you give Astly's `RenderTree` component an html string that is both (a) minified (no extra whitespace) and (b) contains no implicit paragraphs; and 
+(1) you give Astly's `RenderTree` component an html string that is both (a) minified (no extra whitespace) and (b) contains no implicit paragraphs; and
 
-> *Immediate* support planned for the above two issues. But, for now, them's the facts. 
+> _Immediate_ support planned for the above two issues. But, for now, them's the facts.
 
-(2) Astly'll will parse that html into a `syntax-tree` turn it into react that is render-appropriate for the web and native. 
+(2) Astly'll will parse that html into a `syntax-tree` turn it into react that is render-appropriate for the web and native.
 
-It might look something like this: 
+It might look something like this:
 
 ```jsx
-
-import React from 'react';
-import {RenderTree} from '@fabulas/astly';
+import React from "react";
+import { RenderTree } from "@fabulas/astly";
 
 function App() {
   const [tree, setTree] = React.useState(null);
   React.useEffect(() => {
     async function getTree() {
-      const newTree = await fetch('/giveMeTree').then(tree => tree.json());
+      const newTree = await fetch("/giveMeTree").then(tree => tree.json());
       setTree(newTree);
     }
     getTree();
@@ -66,13 +68,11 @@ function App() {
 }
 
 export default App;
-
-
 ```
 
-We're not quite there yet. 
+We're not quite there yet.
 
-> Indeed, ideally, this would only be the beginning. The [Unified](https://github.com/unifiedjs/unified) ecosystem provides an interface for processing text using syntax trees that just so happens to [play very nicely](https://itnext.io/parse-react-components-with-babel-and-visualize-them-45062046cb72) with react. This is what we use to get the job done. So, sky's really the limit. 
+> Indeed, ideally, this would only be the beginning. The [Unified](https://github.com/unifiedjs/unified) ecosystem provides an interface for processing text using syntax trees that just so happens to [play very nicely](https://itnext.io/parse-react-components-with-babel-and-visualize-them-45062046cb72) with react. This is what we use to get the job done. So, sky's really the limit.
 
 ### RenderTree
 
@@ -88,15 +88,13 @@ function App() {
 export default App;
 ```
 
-Astly also exposes complete control over the tree transformation process, allowing you to override each and every one of its default choices if you would like. 😞 And it lets you inspect and or transform the results (react elements) before they are rendered. 
+Astly also exposes complete control over the tree transformation process, allowing you to override each and every one of its default choices if you would like. 😞 And it lets you inspect and or transform the results (react elements) before they are rendered.
 
-See below for examples; prop tables coming soon. 
-
+See below for examples; prop tables coming soon.
 
 ## Astly: The UI Primitives Bits
 
-Astly also exposes the react primitives that it uses under the hood, which should allow you to write custom, platform-agnostic components as far as you can compose them. 
-
+Astly also exposes the react primitives that it uses under the hood, which should allow you to write custom, platform-agnostic components as far as you can compose them.
 
 ### Composable
 
@@ -135,6 +133,7 @@ Some 'canonical' examples might include:
 </Box>;
 
 ```
+
 Astly also provides limited support for `modifiers` (e.g., `strike`,`underline`, etc.); so, the following would work too.
 
 ```
@@ -161,11 +160,10 @@ For example:
 
 Astly also expose another, soon-to-be-renamed prop on `RenderTree` called `inspectNewChildren`...that allows for last-minute transformation and or manipulation of what `RenderTree` wants to render. You could think of it as a render-prop. See [here](https://reactjs.org/docs/react-api.html) for likely use cases.
 
-
 ## Roadmap
 
-* **Decouple parsing bits from rendering bits.** `RenderTree` should  not be concerned with parsing. Ideally, this would be taken care of somewhere outside of the browser/device--i.e., on the backend. But, for present purposes and to ease eventual migration, we should continue to support parsing in the browser via `MakeTree` or something.
-* **More Coming Soon...**
+- **Decouple parsing bits from rendering bits.** `RenderTree` should not be concerned with parsing. Ideally, this would be taken care of somewhere outside of the browser/device--i.e., on the backend. But, for present purposes and to ease eventual migration, we should continue to support parsing in the browser via `MakeTree` or something.
+- **More Coming Soon...**
 
 <!-- Definitions -->
 

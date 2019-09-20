@@ -18,10 +18,10 @@ function getTree() {
   return `
   <div class="App">
     <header style="display: flex; justify-content: center; align-items: center; flex-direction: column;" bg="#282c34" minHeight="100vh" class="App-header">
-     <img height="40vmin" src=${logo} source=${logo} class="App-logo" alt="logo"/>
+     <img height="40vmin" src=${logo} class="App-logo" alt="logo"/>
      <p color="white">Edit src/App.js and save to reload.</p>
      <div>
-      <a class="App-link" href="https://fabulas.io" color="white"><p>Fabulas Link</p></a>
+      <a class="App-link" href="https://fabulas.io" color="white">Fabulas Link</a>
       </div>
     </header>
    </div>`;

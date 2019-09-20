@@ -6,19 +6,14 @@
   },
   "private": true,
   "workspaces": {
-    "packages": [
-      "./",
-      "./example"
-    ]
+    "packages": ["./", "./example", "./native"]
   },
   "description": "Render html, whatever, to pure react and react native. ",
   "main": "dist/index.js",
   "module": "dist/main.umd.development.js",
   "react-native": "dist/main.native.umd.production.js",
   "sideEffects": false,
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/fabulascode/astly.git"

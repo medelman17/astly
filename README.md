@@ -43,9 +43,7 @@ or
 
 Right now, Astly provides limited parsing support for html out of the box. It works like this:
 
-(1) you give Astly's `RenderTree` component an html string that is both (a) minified (no extra whitespace) and (b) contains no implicit paragraphs; and
-
-> _Immediate_ support planned for the above two issues. But, for now, them's the facts.
+(1) you give Astly's `RenderTree` component an html string; and
 
 (2) Astly'll will parse that html into a `syntax-tree` turn it into react that is render-appropriate for the web and native.
 

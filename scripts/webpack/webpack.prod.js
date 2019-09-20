@@ -79,6 +79,8 @@ function getWebpackConfig(opts) {
         root: "React"
       },
       "react-native": "react-native"
+      // "styled-components": "styled-components",
+      // "styled-system": "styled-system"
     },
     entry: getEntry(opts),
     output: getOutput(opts),

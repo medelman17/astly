@@ -656,10 +656,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@fabulas/astly@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.3.tgz#389aeb6d3d8936b9f34e06b18d5067ebcdbb1616"
-  integrity sha512-GWf+dkuee3biaUZZGUeF6Ya5I0n4pqzDZJ0hnjjknZzF0Iq1nbh3VpfXC49DP6VlgJeKYYaPwjgRvnJaqjWiAQ==
+"@fabulas/astly@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.11.tgz#8f9312fc55b56fb2061eb0df81b665bab2a467e5"
+  integrity sha512-edRpYvU/2H4rDX+tUf4bPylXPH/1J6p+XyO8IEHiscXTsxXLgpMHwWSnIh2Tor7++Wqt0vvOLvYyntukHitk0g==
 
 "@hapi/address@2.x.x":
   version "2.1.1"

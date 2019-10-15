@@ -4,6 +4,7 @@
   "private": true,
   "workspaces": {
     "nohoist": [
+      "react-native-cli",
       "@react-native-community",
       "@react-native-community/**"
     ]
@@ -15,7 +16,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.8.1",
+    "react": "^16.10.2",
     "react-native": "0.61.2",
     "react-native-cli": "^2.0.1"
   },

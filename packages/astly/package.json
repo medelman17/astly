@@ -11,19 +11,31 @@
   "author": "Michael Edelman <michael@fabulas.io>",
   "homepage": "https://bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private#readme",
   "license": "ISC",
-  "main": "lib/astly.js",
+  "main": "dist/index.js",
+  "module": "dist/main.umd.development.js",
+  "react-native": "dist/main.native.umd.production.js",
   "directories": {
     "lib": "lib",
+    "dist": "dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "lib",
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "webpack --config ./webpack.config.js --env.env=prod",
+    "build:clean": "rm -rf ./dist",
+    "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
+    "prebuild": "npm run build:clean",
+    "postbuild": "./scripts/postbuild/postbuild.sh"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^1.7.0"
   }
 }

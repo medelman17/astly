@@ -6,6 +6,6 @@
   },
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "examples/*"],
   "version": "independent"
 }

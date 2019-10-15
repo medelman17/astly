@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
 module.exports = astly;
 
 function astly() {
-    // TODO
+  // TODO
 }

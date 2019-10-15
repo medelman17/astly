@@ -1,0 +1,11 @@
+{
+  "command": {
+    "init": {
+      "exact": true
+    }
+  },
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["packages/*", "examples/*"],
+  "version": "independent"
+}

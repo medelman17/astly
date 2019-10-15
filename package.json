@@ -1,0 +1,38 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ],
+    "nohoist": [
+      "react-native",
+      "react-native/**",
+      "react-native-*",
+      "react-native-*/**",
+      "@react-native-community",
+      "@react-native-community/**"
+    ]
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "dev": "lerna run dev",
+    "postinstall": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.6.1",
+    "lerna": "3.17.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "@react-native-community/cli": "^2.9.0"
+  }
+}

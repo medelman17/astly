@@ -1,0 +1,29 @@
+{
+  "name": "next",
+  "version": "0.0.12",
+  "description": "> TODO: description",
+  "author": "Michael Edelman <michael@fabulas.io>",
+  "homepage": "https://bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private#readme",
+  "license": "ISC",
+  "main": "lib/next.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private.git"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "next": "^9.1.1"
+  }
+}

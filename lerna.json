@@ -4,8 +4,8 @@
       "exact": true
     }
   },
-  "packages": [
-    "packages/*"
-  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["packages/*"],
   "version": "independent"
 }

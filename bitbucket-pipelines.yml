@@ -8,8 +8,31 @@ image: node:10.15.3
 pipelines:
   default:
     - step:
+        name: Build and Deploy to Production
+        deployment: production
         caches:
           - node
         script: # Modify the commands below to build your repository.
           - yarn install
           - yarn build
+  branches:
+    master:
+      - step:
+          name: Build and Deploy to Staging
+          deployment: staging
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn build
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./"
+    develop:
+      - step:
+          name: Build and Deploy to Staging
+          deployment: staging
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn build
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"./"

@@ -19,5 +19,15 @@ export default function Box({ children, ...props }) {
 const styles = compose(space, layout, color, flexbox, border, background);
 
 const StyledBox = styled[isNative ? "View" : "div"]`
+  ${variant({
+    scale: "box",
+    variants: {
+      normal: {}
+    }
+  })}
   ${styles}
 `;
+
+Box.defaultProps = {
+  variant: "normal"
+};

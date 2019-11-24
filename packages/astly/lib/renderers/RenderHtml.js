@@ -1,5 +1,4 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 import { isNative } from "../helpers";
 import defaultComponentMap from "../maps";
 import Box from "../components/Box";
@@ -47,7 +46,6 @@ class RenderHtml extends React.Component {
 
   render() {
     const { inspectNewChildren, ...props } = this.props;
-
     return (
       <React.Fragment>
         {inspectNewChildren(this.renderNewChildren())}

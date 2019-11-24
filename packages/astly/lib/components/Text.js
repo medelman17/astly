@@ -10,5 +10,32 @@ export default function Text({ children, ...props }) {
 const styles = compose(color, typography, space);
 
 const StyledText = styled[isNative ? "Text" : "p"]`
+  ${variant({
+    scale: "text",
+    variants: {
+      normal: {}
+    }
+  })}
+  ${variant({
+    prop: "modifier",
+    variants: {
+      italic: {
+        fontStyle: "italic"
+      },
+      bold: {
+        fontWeight: "bold"
+      },
+      underlined: {
+        textDecoration: "underline"
+      },
+      strike: {
+        textDecoration: "line-through"
+      }
+    }
+  })}
   ${styles}
 `;
+
+Text.defaultProps = {
+  variant: "normal"
+};

@@ -26,7 +26,7 @@ import {
 
 import {Box, RenderHtml} from '@fabulas/astly';
 
-const App: () => React$Node = () => {
+const App = () => {
   console.log('hi');
   return (
     <>

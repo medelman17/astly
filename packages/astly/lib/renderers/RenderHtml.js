@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { isNative } from "../helpers";
 import defaultComponentMap from "../maps";
 import Box from "../components/Box";
+import withRoot from "../components/Root";
 import { parseHtml } from "../parsers";
 
 class RenderHtml extends React.Component {
@@ -49,12 +50,10 @@ class RenderHtml extends React.Component {
 
     return (
       <React.Fragment>
-        <ThemeProvider theme={this.props.theme}>
-          {inspectNewChildren(this.renderNewChildren())}
-        </ThemeProvider>
+        {inspectNewChildren(this.renderNewChildren())}
       </React.Fragment>
     );
   }
 }
 
-export default RenderHtml;
+export default withRoot(RenderHtml);

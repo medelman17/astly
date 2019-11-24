@@ -1,3 +1,7 @@
-import styled, { ThemeProvider, css } from "styled-components";
+import styled, {
+  ThemeProvider,
+  StyleSheetManager,
+  css
+} from "styled-components";
 
-export { styled, ThemeProvider, css };
+export { styled, ThemeProvider, StyleSheetManager, css };

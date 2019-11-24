@@ -1,7 +1,7 @@
 "use strict";
 
 if (process.env.NODE_ENV === "production") {
-  module.exports = require("./main.native.commonjs2.production.js");
+  module.exports = require("./main.native.umd.development.js");
 } else {
-  module.exports = require("./main.native.commonjs2.development.js");
+  module.exports = require("./main.native.umd.development.js");
 }

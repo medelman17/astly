@@ -13,7 +13,7 @@ function getOutput(opts) {
       };
     default:
       return {
-        library: "@fabulas/astly",
+        library: "astly",
         libraryTarget: opts.buildType,
         filename:
           opts.buildFor === "native"
@@ -54,7 +54,9 @@ function getPlugins(opts) {
     new Dotenv({
       path: path.resolve(__dirname, `../../.${opts.buildFor}.env`)
     }),
-    new webpack.ProvidePlugin({})
+    new webpack.ProvidePlugin({
+      react: path.resolve(__dirname, "node_modules/react")
+    })
   ];
 }
 
@@ -73,10 +75,16 @@ function getWebpackConfig(opts) {
     },
     externals: {
       react: {
-        commonjs: "react",
+        root: "React",
         commonjs2: "react",
-        amd: "react",
-        root: "React"
+        commonjs: "react",
+        amd: "react"
+      },
+      "react-dom": {
+        root: "ReactDOM",
+        commonjs2: "react-dom",
+        commonjs: "react-dom",
+        amd: "react-dom"
       },
       "react-native": "react-native"
       // "styled-components": "styled-components",

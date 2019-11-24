@@ -1,6 +1,7 @@
 {
   "name": "next",
   "version": "0.0.12",
+  "private": true,
   "description": "> TODO: description",
   "author": "Michael Edelman <michael@fabulas.io>",
   "homepage": "https://bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private#readme",
@@ -24,6 +25,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "next": "^9.1.1"
+    "astly": "*",
+    "next": "^9.1.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "styled-components": "^4.4.1"
   }
 }

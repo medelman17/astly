@@ -22,6 +22,11 @@ const prodOptions = [
     buildType: "commonjs2",
     path: "dist"
   },
+  {
+    buildFor: "web",
+    buildType: "commonjs2",
+    path: "dist"
+  },
 
   {
     buildFor: "web",

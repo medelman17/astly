@@ -16,9 +16,11 @@ function wrapImplicitParagraphs(props) {
   }
 
   function visitor(node, index, parent) {
-    // if (!isNative) {
-    //   return;
-    // }
+    if (!isNative) {
+      return;
+    }
+    // console.log("NODE", node);
+    // console.log("PARENT", parent);
     if (is(parent, ["div", "a"])) {
       const { properties } = parent;
       const newNode = h("span", properties, node.value);

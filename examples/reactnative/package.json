@@ -2,13 +2,6 @@
   "name": "reactnative",
   "version": "0.0.1",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "react-native-cli",
-      "@react-native-community",
-      "@react-native-community/**"
-    ]
-  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -16,8 +9,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "astly": "file:../../packages/astly",
     "react": "^16.10.2",
-    "react-native": "0.61.2",
+    "react-native": "^0.61.2",
     "react-native-cli": "^2.0.1"
   },
   "devDependencies": {

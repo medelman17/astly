@@ -1,4 +1,5 @@
-export { Box } from "./Box/box";
-export { Text } from "./Text/text";
-export { Touchable } from "./Touchable/touchable";
-export { Media } from "./Media/media";
+import Box from "./Box";
+import Text from "./Text";
+import Script from "./Script";
+
+export { Box, Text, Script };

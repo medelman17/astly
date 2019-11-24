@@ -2,7 +2,11 @@ import Box from "../components/Box";
 import Flex from "../components/Flex";
 import Text from "../components/Text";
 import Script from "../components/Script";
+import Table from "../components/Table";
 import { withProps } from "./withProps";
+import TableHeader from "../components/TableHeader";
+import TableRow from "../components/TableRow";
+import TableBody from "../components/TableBody";
 
 export default {
   div: Box,
@@ -25,6 +29,12 @@ export default {
   html: Box,
   row: withProps(Flex, { variant: "row" }),
   col: withProps(Flex, { variant: "col" }),
+  table: withProps(Table, {}),
+  thead: TableHeader,
+  tbody: TableBody,
+  tr: TableRow,
+  td: Table.Cell,
+  th: TableRow,
   //   a: Touchable,
   //   img: Media,
   script: Script

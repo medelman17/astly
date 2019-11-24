@@ -23,6 +23,7 @@ export function createTheme(props = {}) {
     fontSizes: getSizeObject(fontSizes),
     space: getSpaceObject(space),
     text: Variants.getTextVariants({ fontSizes, space }),
-    box: Variants.getBoxVariants({})
+    box: Variants.getBoxVariants({}),
+    table: Variants.getTableVariants({ colors })
   };
 }

@@ -1,7 +1,3 @@
-import styled, {
-  ThemeProvider,
-  StyleSheetManager,
-  css
-} from "styled-components/native";
+import styled, { ThemeProvider, css } from "styled-components/native";
 
-export { styled, ThemeProvider, StyleSheetManager, css };
+export { styled, ThemeProvider, css };

@@ -3,5 +3,19 @@ import Text from "./Text";
 import Script from "./Script";
 import Root from "./Root";
 import Flex from "./Flex";
+import Table from "./Table";
+import TableHeader from "./TableHeader";
+import TableRow from "./TableRow";
+import TableBody from "./TableBody";
 
-export { Box, Text, Script, Root, Flex };
+export {
+  Box,
+  Text,
+  Script,
+  Root,
+  Flex,
+  Table,
+  TableHeader,
+  TableRow,
+  TableBody
+};

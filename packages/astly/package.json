@@ -1,6 +1,6 @@
 {
-  "name": "astly",
-  "version": "0.0.13",
+  "name": "@fabulas/astly",
+  "version": "0.0.15",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -12,9 +12,8 @@
     "ast",
     "render"
   ],
-  "author": "Michael Edelman <michael@fabulas.io>",
-  "homepage": "https://bitbucket.org/TCP_BitBucket_Admin/tcp-npm-private#readme",
-  "license": "ISC",
+  "author": "Michael Jopseph Edelman <michael@fabulas.io>",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/main.esm.prod.js",
   "react-native": "dist/index.native.js",

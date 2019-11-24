@@ -24,7 +24,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {Box, RenderHtml} from 'astly';
+import {Box, RenderHtml} from '@fabulas/astly';
 
 const App: () => React$Node = () => {
   console.log('hi');

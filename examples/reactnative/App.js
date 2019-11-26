@@ -1,34 +1,22 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-import {Box, RenderHtml} from '@fabulas/astly';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Text, RenderHtml, Flex} from '@fabulas/astly';
 
 import testHtml from './testHtml';
 
+import {t1, t2} from './themes';
+
 const App = () => {
+  const [currentTheme, toggleTheme] = React.useState(false);
+  const thisTheme = currentTheme === true ? t1 : t2;
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -37,7 +25,20 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <View style={styles.body}>
-            <RenderHtml html={testHtml} />
+            <Flex
+              bg={thisTheme.colors.primary}
+              py="1"
+              alignItems="center"
+              justifyContet="center">
+              <Text
+                color="white"
+                onPress={() => {
+                  toggleTheme(!currentTheme);
+                }}>
+                Toggle Theme
+              </Text>
+            </Flex>
+            {<RenderHtml html={testHtml} theme={thisTheme} />}
           </View>
         </ScrollView>
       </SafeAreaView>

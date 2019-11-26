@@ -73,6 +73,13 @@ function getWebpackConfig(opts) {
     optimization: {
       usedExports: true
     },
+    resolve: {
+      // extensions: [".ts", ".tsx", ".js", ".jsx"],
+      alias: {
+        react: path.resolve("./node_modules/react"),
+        "@fabulas/themes": path.resolve("../../../themes")
+      }
+    },
     externals: {
       react: {
         root: "React",

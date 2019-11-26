@@ -7,6 +7,7 @@ import { withProps } from "./withProps";
 import TableHeader from "../components/TableHeader";
 import TableRow from "../components/TableRow";
 import TableBody from "../components/TableBody";
+import Button from "../components/Button";
 
 export default {
   div: Box,
@@ -35,7 +36,9 @@ export default {
   tr: TableRow,
   td: Table.Cell,
   th: TableRow,
+  button: withProps(Button, {}),
   //   a: Touchable,
   //   img: Media,
-  script: Script
+  script: Script,
+  style: () => null
 };

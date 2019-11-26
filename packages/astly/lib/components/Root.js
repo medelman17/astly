@@ -1,25 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "../styled";
 import { StyleSheetManager } from "styled-components";
-import { createTheme } from "../theme";
+import { createTheme } from "../../../themes/lib";
 
 function withRoot(Component) {
   class Root extends React.Component {
-    state = {
-      theme: {}
-    };
-
-    componentDidMount() {
-      const { theme: passedTheme } = this.props;
-      const theme = createTheme(passedTheme ? passedTheme : {});
-      this.setState(prev => ({ ...prev, theme }));
-    }
-
     render() {
       const { children, theme, ...props } = this.props;
-
+      const { theme: passedTheme } = this.props;
       return (
-        <ThemeProvider theme={this.state.theme}>
+        <ThemeProvider theme={createTheme(passedTheme ? passedTheme : {})}>
           <StyleSheetManager>
             <Component {...props}>{children}</Component>
           </StyleSheetManager>

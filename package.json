@@ -10,7 +10,9 @@
       "**/react-native",
       "**/react-native/**",
       "**/react",
-      "**/react/**"
+      "**/react/**",
+      "**/styled-components",
+      "**/styled-components/**"
     ]
   },
   "scripts": {
@@ -27,6 +29,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-macros": "^2.6.1",
     "lerna": "3.17.0",
+    "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-native": "^0.61.2",

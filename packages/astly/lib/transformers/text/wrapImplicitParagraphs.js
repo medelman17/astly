@@ -6,7 +6,7 @@ import is from "hast-util-is-element";
 // import has from "hast-util-has-property";
 import h from "hastscript";
 
-const TAGS_TO_WRAP = ["div", "a", "td", "th", "li", "section"];
+const TAGS_TO_WRAP = ["div", "a", "td", "th", "li", "section", "button"];
 
 export { wrapImplicitParagraphs };
 

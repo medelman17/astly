@@ -7,6 +7,7 @@ import Table from "./Table";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import TableBody from "./TableBody";
+import Button from "./Button";
 
 export {
   Box,
@@ -17,5 +18,7 @@ export {
   Table,
   TableHeader,
   TableRow,
-  TableBody
+  TableBody,
+  Button
 };
+// comment to update webpack

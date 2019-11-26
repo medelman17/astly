@@ -1,5 +1,5 @@
 import React from "react";
-import { RenderTree } from "astly";
+import { RenderHtml } from "@fabulas/astly";
 // const RenderTree = dynamic(() => import("astly").then(mod => mod.RenderTree), {
 //   loading: () => <p>Loading caused by client page transition ...</p>
 // });
@@ -26,7 +26,7 @@ const injectJS = `<h5 style="text-align: center;"> Injected h5 </h5>
 const Index = () => {
   return (
     <div>
-      <RenderTree tree={injectJS} />
+      <RenderHtml html={injectJS} />
     </div>
   );
 };

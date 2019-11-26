@@ -4,11 +4,17 @@ import toReact from "rehype-react";
 import parse from "rehype-parse";
 import minifyWhitespace from "rehype-minify-whitespace";
 
-import { handleImages, handleText, handleLinks } from "../transformers";
+import {
+  handleImages,
+  handleText,
+  handleLinks,
+  handleStyleTags
+} from "../transformers";
 
 export const parseHtml = options =>
   unified()
     .use(parse)
+    .use(handleStyleTags(options))
     .use(handleImages(options))
     .use(handleText(options))
     .use(handleLinks(options))

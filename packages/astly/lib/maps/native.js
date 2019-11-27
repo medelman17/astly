@@ -38,7 +38,7 @@ export default {
   td: Table.Cell,
   th: TableRow,
   button: withProps(Button, {}),
-  //   a: Touchable,
+  a: withProps(Text, {}),
   img: Media,
   script: Script,
   style: () => null,

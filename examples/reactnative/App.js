@@ -13,6 +13,15 @@ import testHtml from './testHtml';
 
 import {t1, t2} from './themes';
 
+const tools = {
+  onClick(node) {
+    alert(JSON.stringify(node, null, 2));
+  },
+  navigate(node) {
+    alert(JSON.stringify(node, null, 2));
+  },
+};
+
 const App = () => {
   const [currentTheme, toggleTheme] = React.useState(false);
   const thisTheme = currentTheme === true ? t1 : t2;
@@ -25,7 +34,7 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <View style={styles.body}>
-            {/* <Flex
+            <Flex
               bg={thisTheme.colors.primary}
               py="1"
               alignItems="center"
@@ -37,8 +46,8 @@ const App = () => {
                 }}>
                 Toggle Theme
               </Text>
-            </Flex> */}
-            {<RenderHtml html={testHtml} theme={thisTheme} />}
+            </Flex>
+            {<RenderHtml html={testHtml} theme={thisTheme} tools={tools} />}
           </View>
         </ScrollView>
       </SafeAreaView>

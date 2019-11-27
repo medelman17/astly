@@ -17,12 +17,11 @@ function correctLinkHandlers(props) {
 
   function visitor(node, index, parent) {
     if (is(node, 'button')) {
-      node.properties[isNative ? 'onPress' : 'onClick'] = e => {
+      node.properties[isNative ? 'onPress' : 'onClick'] = function(e) {
         e.preventDefault();
-
-        // if (tools && tools.navigate && typeof tools.navigate === "function") {
-        //   tools.navigate(node, { isNative });
-        // }
+        if (tools && tools.onClick && typeof tools.onClick === 'function') {
+          tools.onClick(node, {isNative});
+        }
       };
     }
     if (is(node, 'a') && !has(node, 'onClick')) {
@@ -34,4 +33,8 @@ function correctLinkHandlers(props) {
       };
     }
   }
+}
+
+function handleOnClick(obj) {
+  return Function('');
 }

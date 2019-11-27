@@ -25,7 +25,7 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <View style={styles.body}>
-            <Flex
+            {/* <Flex
               bg={thisTheme.colors.primary}
               py="1"
               alignItems="center"
@@ -37,7 +37,7 @@ const App = () => {
                 }}>
                 Toggle Theme
               </Text>
-            </Flex>
+            </Flex> */}
             {<RenderHtml html={testHtml} theme={thisTheme} />}
           </View>
         </ScrollView>

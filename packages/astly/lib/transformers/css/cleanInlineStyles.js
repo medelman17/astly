@@ -5,9 +5,9 @@ import postcss from 'postcss';
 import transform from 'css-to-react-native';
 import {isNative} from '../../helpers';
 
-export {cssToStyleSheet};
+export {cleanInlineStyles};
 
-function cssToStyleSheet(props) {
+function cleanInlineStyles(props) {
   return transformer;
 
   function transformer(tree, file) {
@@ -18,20 +18,19 @@ function cssToStyleSheet(props) {
         tagName,
         properties: {style},
       } = node;
-      if (isNative && tagName === 'style') {
-        const rawCss = node.children[0].value;
-        const root = postcss.parse(rawCss);
-        const map = handleCssParsing(root);
-        for (let key in map) {
-          const conformedKey = conformKey(key);
-          file.data.styles[conformedKey] = transform(map[key]);
-        }
-      }
-      if (isNative && node.properties.style !== undefined) {
+      if (isNative && style !== undefined) {
         const root = postcss.parse(style);
         const map = handleCssParsing(root);
         const {style: cleanedStyles} = map;
         node.properties.style = transform(cleanedStyles);
+
+        // const rawCss = node.children[0].value;
+        // const root = postcss.parse(rawCss);
+        // const map = handleCssParsing(root);
+        // for (let key in map) {
+        //   const conformedKey = conformKey(key);
+        //   file.data.styles[conformedKey] = transform(map[key]);
+        // }
       }
     }
   }
@@ -51,16 +50,11 @@ function handleCssParsing(root) {
       children.map(parseCssNodes);
     }
     if (node.type === 'decl') {
-      const key = getStyleKey(node);
+      const key = node.parent.selector || 'style';
       if (!map[key]) {
         map[key] = [];
       }
       map[key].push([node.prop, node.value]);
     }
   }
-}
-
-function getStyleKey(node) {
-  const {selector} = node.parent;
-  return selector !== undefined ? selector : 'style';
 }

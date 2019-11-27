@@ -16,9 +16,13 @@ export default `
 }
 </style>
 <div>
-    <h1 style="font-size: 12px;">
+    <h1 >
       HTML, CSS, & React Native
     </h1>
+    <div>
+    <h2>Enjoy this picture of Chicago</h2>
+    <img src="https://www.gannett-cdn.com/presto/2018/10/03/USAT/52c93270-3c36-4539-9bdd-35ba7a5112d5-GettyImages-874734912.jpg" />
+    </div>
     <h2>
       Using this css... 
     </h2>
@@ -50,5 +54,7 @@ export default `
     <h2>
       JavaScript / JSX required to make this screen? Zero.
     </h2>
+    
+    
   </div>
 `;

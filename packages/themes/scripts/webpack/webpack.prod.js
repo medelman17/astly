@@ -1,31 +1,34 @@
-const path = require("path");
-const webpack = require("webpack");
-const Dotenv = require("dotenv-webpack");
+const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 function getOutput(opts) {
   switch (opts.buildType) {
-    case "esm":
+    case 'esm':
       return {
         filename:
-          opts.buildFor === "native" ? `astly.native.esm.js` : `astly.esm.js`,
-        path: path.resolve(__dirname, "../../", opts.path),
-        globalObject: "typeof self !== 'undefined' ? self : this"
+          opts.buildFor === 'native'
+            ? `astly-themes.native.esm.js`
+            : `astly-themes.esm.js`,
+        path: path.resolve(__dirname, '../../', opts.path),
+        globalObject: "typeof self !== 'undefined' ? self : this",
       };
     default:
       return {
-        library: "astly",
+        library: '',
         libraryTarget: opts.buildType,
         filename:
-          opts.buildFor === "native"
+          opts.buildFor === 'native'
             ? `[name].native.${opts.buildType}.production.js`
             : `[name].${opts.buildType}.production.js`,
         chunkFilename:
-          opts.buildFor === "native"
+          opts.buildFor === 'native'
             ? `[name].native.${opts.buildType}.bundle.production.js`
             : `[name].${opts.buildType}.bundle.production.js`,
         umdNamedDefine: true,
-        path: path.resolve(__dirname, "../../", opts.path),
-        globalObject: "typeof self !== 'undefined' ? self : this"
+        path: path.resolve(__dirname, '../../', opts.path),
+        globalObject: "typeof self !== 'undefined' ? self : this",
       };
   }
 }
@@ -33,73 +36,75 @@ function getOutput(opts) {
 function getModule(opts) {
   return {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
       {
         test: /\.js$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              babelrc: false
-            }
-          }
-        ]
-      }
-    ]
+              babelrc: false,
+            },
+          },
+        ],
+      },
+    ],
   };
 }
 
 function getPlugins(opts) {
   return [
     new Dotenv({
-      path: path.resolve(__dirname, `../../.${opts.buildFor}.env`)
+      path: path.resolve(__dirname, `../../.${opts.buildFor}.env`),
     }),
     new webpack.ProvidePlugin({
-      react: path.resolve(__dirname, "node_modules/react")
-    })
+      react: path.resolve(__dirname, 'node_modules/react'),
+    }),
   ];
 }
 
 function getEntry(opts) {
   return {
-    main: path.resolve(__dirname, "../../lib/index.js")
+    main: path.resolve(__dirname, '../../lib/index.js'),
   };
 }
 
 function getWebpackConfig(opts) {
   return {
-    mode: "production",
-    devtool: "source-map",
+    mode: 'production',
+    devtool: 'none',
     optimization: {
-      usedExports: true
+      usedExports: true,
+      minimize: true,
+      minimizer: [new TerserPlugin()],
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
-        react: path.resolve("./node_modules/react")
-      }
+        react: path.resolve('./node_modules/react'),
+      },
     },
     externals: {
       react: {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react"
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react',
       },
-      "react-dom": {
-        root: "ReactDOM",
-        commonjs2: "react-dom",
-        commonjs: "react-dom",
-        amd: "react-dom"
+      'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom',
       },
-      "react-native": "react-native"
+      'react-native': 'react-native',
       // "styled-components": "styled-components",
       // "styled-system": "styled-system"
     },
     entry: getEntry(opts),
     output: getOutput(opts),
     module: getModule(opts),
-    plugins: getPlugins(opts)
+    plugins: getPlugins(opts),
   };
 }
 

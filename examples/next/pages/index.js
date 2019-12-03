@@ -1,33 +1,35 @@
-import React from "react";
-import { RenderHtml } from "@fabulas/astly";
-// const RenderTree = dynamic(() => import("astly").then(mod => mod.RenderTree), {
-//   loading: () => <p>Loading caused by client page transition ...</p>
-// });
+import React from 'react';
+import {RenderHtml, Text, Flex, ComponentMap} from '@fabulas/astly';
+import {one, two} from '@fabulas/themes';
+import testHtml from '../src/testHtml';
 
-// const Box = dynamic(() => import("astly").then(mod => mod.Box), {
-//   loading: () => <p>Loading caused by client page transition ...</p>
-// });
-
-const injectJS = `<h5 style="text-align: center;"> Injected h5 </h5>
-<div bg="hotpink">
-  <p color="white" style="text-align: center;">Module X is Working</p>
-</div>
-<style>
-    .header-middle-nav {
-        background-color: hotpink;
-
-    }
-    .edelman {
-        background-image: url("https://media.giphy.com/media/haZOqHKz9tTfW/giphy.gif");
-    }
-</style>
-`;
+import '../src/styles.scss';
 
 const Index = () => {
+  const [currentTheme, toggleTheme] = React.useState(false);
+  const thisTheme = currentTheme === true ? one : two;
+
+  console.log('Current Theme Overrides:', JSON.stringify(thisTheme, null, 2));
+
   return (
-    <div>
-      <RenderHtml html={injectJS} />
-    </div>
+    <>
+      <Flex
+        bg={thisTheme.colors.primary}
+        py="1"
+        flexGrow={1}
+        variant="col"
+        alignItems="center"
+        justifyContent="center"
+        style={{display: 'flex'}}
+        onClick={() => {
+          toggleTheme(!currentTheme);
+        }}>
+        <Text className="test" color="white">
+          Toggle Theme
+        </Text>
+      </Flex>
+      <RenderHtml html={testHtml} theme={thisTheme} />
+    </>
   );
 };
 

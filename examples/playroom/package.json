@@ -1,0 +1,37 @@
+{
+  "name": "playroom",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "playroom:start": "IS_NATIVE=FALSE NODE_OPTIONS='--max-old-space-size=4096' playroom start",
+    "playroom:build": "playroom build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.7.3",
+    "@babel/preset-react": "^7.7.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "file-loader": "^5.0.2",
+    "node-sass": "^4.13.0",
+    "playroom": "^0.10.1",
+    "sass-loader": "^8.0.0",
+    "scss-loader": "^0.0.1",
+    "serve": "^11.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@fabulas/astly": "0.0.16-beta.0",
+    "@fabulas/themes": "^0.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0-rc.2"
+  }
+}

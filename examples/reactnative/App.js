@@ -8,10 +8,9 @@ import {
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Text, RenderHtml, Flex} from '@fabulas/astly';
+import {one, two} from '@fabulas/themes';
 
 import testHtml from './testHtml';
-
-import {t1, t2} from './themes';
 
 const tools = {
   onClick(node) {
@@ -24,7 +23,7 @@ const tools = {
 
 const App = () => {
   const [currentTheme, toggleTheme] = React.useState(false);
-  const thisTheme = currentTheme === true ? t1 : t2;
+  const thisTheme = currentTheme === true ? one : two;
 
   return (
     <>

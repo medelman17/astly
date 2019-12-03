@@ -49,6 +49,7 @@ function getNativeDefaultProps() {
 
 function getWebDefaultProps() {
   return {
+    style: {width: '100%'},
     variant: 'normal',
   };
 }

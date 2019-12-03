@@ -6,6 +6,9 @@
   },
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/**", "examples/**"],
-  "version": "independent"
+  "packages": ["packages/*"],
+  "version": "independent",
+  "create": {
+    "license": "MIT"
+  }
 }

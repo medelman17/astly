@@ -2,12 +2,12 @@ import {
   getColorsObject,
   getSizeObject,
   getSpaceObject,
-  handleThemeMerge
-} from "../helpers";
-import * as Default from "../defaults";
-import * as Variants from "../variants";
+  handleThemeMerge,
+} from '../helpers';
+import * as Default from '../defaults';
+import * as Variants from '../variants';
 
-export function createTheme(userTheme = {}) {
+export function createTheme(userTheme) {
   const {
     colors,
     space,
@@ -16,21 +16,21 @@ export function createTheme(userTheme = {}) {
     text,
     box,
     table,
-    buttons
+    buttons,
   } = userTheme;
 
   const themeValues = {
-    colors: handleThemeMerge(Default.colors, colors),
-    fontSizes: handleThemeMerge(Default.fontSizes, fontSizes),
-    space: handleThemeMerge(Default.space, space),
-    fonts: handleThemeMerge(Default.fonts, fonts)
+    colors: handleThemeMerge(Default.colors, userTheme.colors),
+    fontSizes: userTheme.fontSizes ? userTheme.fontSizes : Default.fontSizes,
+    space: userTheme.space ? userTheme.space : Default.space,
+    fonts: handleThemeMerge(Default.fonts, userTheme.fonts),
   };
 
   const themeVariants = {
-    text: Variants.getTextVariants({ ...themeValues }),
-    box: Variants.getBoxVariants({ ...themeValues }),
-    table: Variants.getTableVariants({ ...themeValues }),
-    buttons: Variants.getButtonVariants({ ...themeValues })
+    text: Variants.getTextVariants({...themeValues}),
+    box: Variants.getBoxVariants({...themeValues}),
+    table: Variants.getTableVariants({...themeValues}),
+    buttons: Variants.getButtonVariants({...themeValues}),
   };
 
   return {
@@ -38,9 +38,9 @@ export function createTheme(userTheme = {}) {
     fontSizes: getSizeObject(themeValues.fontSizes),
     space: getSpaceObject(themeValues.space),
     fonts: themeValues.fonts,
-    text: handleThemeMerge(themeVariants.text, text),
-    box: handleThemeMerge(themeVariants.box, box),
-    table: handleThemeMerge(themeVariants.table, table),
-    buttons: handleThemeMerge(themeVariants.buttons, buttons)
+    text: {...themeVariants.text, ...text},
+    box: {...themeVariants.box, ...box},
+    table: {...themeVariants.table, ...table},
+    buttons: {...themeVariants.buttons, ...buttons},
   };
 }

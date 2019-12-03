@@ -1,4 +1,4 @@
-import merge from "deepmerge";
+import merge from 'deepmerge';
 
 export function handleThemeMerge(defaultProps, userProps) {
   if (!userProps) {

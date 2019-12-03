@@ -2,17 +2,24 @@ import React from 'react';
 import Flex from './Flex';
 import {styled} from '../styled';
 import {isNative} from '../helpers';
-import {flexbox, compose, variant} from 'styled-system';
+import {
+  flexbox,
+  typography,
+  compose,
+  variant,
+  color,
+  layout,
+} from 'styled-system';
 
 export default function Button({children, ...props}) {
   return (
     <StyledButton {...props}>
-      <React.Fragment>{children}</React.Fragment>
+      <Flex>{children}</Flex>
     </StyledButton>
   );
 }
 
-const styles = compose(flexbox);
+const styles = compose(flexbox, color, layout, typography);
 
 const StyledButton = styled[isNative ? 'TouchableHighlight' : 'button']`
   ${variant({

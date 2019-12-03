@@ -1,32 +1,32 @@
-const path = require("path");
-const webpack = require("webpack");
-const Dotenv = require("dotenv-webpack");
+const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 function getOutput(opts) {
   switch (opts.buildType) {
-    case "esm":
+    case 'esm':
       return {
         filename:
-          opts.buildFor === "native"
+          opts.buildFor === 'native'
             ? `astly.native.esm.dev.js`
             : `[name].esm.dev.js`,
-        path: path.resolve(__dirname, "../../", opts.path)
+        path: path.resolve(__dirname, '../../', opts.path),
       };
     default:
       return {
-        library: "astly",
+        library: 'astly',
         libraryTarget: opts.buildType,
         filename:
-          opts.buildFor === "native"
+          opts.buildFor === 'native'
             ? `[name].native.${opts.buildType}.development.js`
             : `[name].${opts.buildType}.development.js`,
         chunkFilename:
-          opts.buildFor === "native"
+          opts.buildFor === 'native'
             ? `[name].native.${opts.buildType}.development.bundle.js`
             : `[name].${opts.buildType}.development.bundle.js`,
         umdNamedDefine: true,
-        path: path.resolve(__dirname, "../../", opts.path),
-        globalObject: "typeof self !== 'undefined' ? self : this"
+        path: path.resolve(__dirname, '../../', opts.path),
+        globalObject: "typeof self !== 'undefined' ? self : this",
       };
   }
 }
@@ -34,72 +34,86 @@ function getOutput(opts) {
 function getModule(opts) {
   return {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
       {
         test: /\.js$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              babelrc: false
-            }
-          }
-        ]
-      }
-    ]
+              babelrc: false,
+            },
+          },
+        ],
+      },
+    ],
   };
 }
 
 function getPlugins(opts) {
   return [
     new Dotenv({
-      path: path.resolve(__dirname, `../../.${opts.buildFor}.env`)
+      path: path.resolve(__dirname, `../../.${opts.buildFor}.env`),
     }),
-    new webpack.ProvidePlugin({})
+    new webpack.ProvidePlugin({
+      react: path.resolve(__dirname, 'node_modules/react'),
+      'styled-components': path.resolve(
+        __dirname,
+        'node_modules/styled-components',
+      ),
+      'styled-components/native': path.resolve(
+        __dirname,
+        'node_modules/styled-components/native',
+      ),
+    }),
   ];
 }
 
 function getEntry(opts) {
   return {
-    main: path.resolve(__dirname, "../../lib/index.js")
+    main: path.resolve(__dirname, '../../lib/index.js'),
   };
 }
 
 function getWebpackConfig(opts) {
   return {
-    mode: "development",
-    devtool: "inline-source-map",
+    mode: 'development',
+    devtool: 'eval',
     optimization: {
-      usedExports: true
+      usedExports: true,
     },
     resolve: {
-      // extensions: [".ts", ".tsx", ".js", ".jsx"],
+      // extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
-        react: path.resolve("./node_modules/react"),
-        "@fabulas/themes": path.resolve("../../../themes")
-      }
+        react: path.resolve('./node_modules/react'),
+        // 'styled-components': path.resolve('./node_modules/styled-components'),
+        // 'styled-components/native': path.resolve(
+        //   './node_modules/styled-components/native',
+        // ),
+        // '@fabulas/themes': path.resolve('../../../themes'),
+      },
     },
     externals: {
       react: {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react"
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react',
       },
-      "react-dom": {
-        root: "ReactDOM",
-        commonjs2: "react-dom",
-        commonjs: "react-dom",
-        amd: "react-dom"
+      'react-dom': {
+        root: 'ReactDOM',
+        commonjs2: 'react-dom',
+        commonjs: 'react-dom',
+        amd: 'react-dom',
       },
-      "react-native": "react-native"
+      'react-native': 'react-native',
 
       // "styled-system": "styled-system"
     },
     entry: getEntry(opts),
     output: getOutput(opts),
     module: getModule(opts),
-    plugins: getPlugins(opts)
+    plugins: getPlugins(opts),
   };
 }
 

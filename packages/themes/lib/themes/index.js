@@ -1,4 +1,4 @@
-export * from "./core";
-export * from "./createTheme";
-export * from "./createVariants";
-export { default as core } from "./core";
+export {createTheme} from './createTheme';
+export * from './createVariants';
+export {one} from './one';
+export {two} from './two';

@@ -7,7 +7,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Text, RenderHtml, Flex} from '@fabulas/astly';
+import {Text, RenderHtml, RenderTree, Flex, ComponentMap} from '@fabulas/astly';
 import {one, two} from '@fabulas/themes';
 
 import testHtml from './testHtml';
@@ -23,7 +23,9 @@ const tools = {
 
 const App = () => {
   const [currentTheme, toggleTheme] = React.useState(false);
+  const [currentHTML, toggleHTML] = React.useState(true);
   const thisTheme = currentTheme === true ? one : two;
+  const thisHtml = currentHTML === true ? `<div></div>` : testHtml;
 
   return (
     <>
@@ -34,6 +36,7 @@ const App = () => {
           style={styles.scrollView}>
           <View style={styles.body}>
             <Flex
+              border={2}
               bg={thisTheme.colors.primary}
               py="1"
               alignItems="center"
@@ -46,7 +49,21 @@ const App = () => {
                 Toggle Theme
               </Text>
             </Flex>
-            {<RenderHtml html={testHtml} theme={thisTheme} tools={tools} />}
+            <Flex
+              border={2}
+              bg={thisTheme.colors.primary}
+              py="1"
+              alignItems="center"
+              justifyContet="center">
+              <Text
+                color="white"
+                onPress={() => {
+                  toggleHTML(!currentHTML);
+                }}>
+                Toggle HTML
+              </Text>
+            </Flex>
+            {<RenderHtml html={thisHtml} theme={thisTheme} tools={tools} />}
           </View>
         </ScrollView>
       </SafeAreaView>

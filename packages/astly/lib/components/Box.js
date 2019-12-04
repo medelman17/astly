@@ -11,6 +11,7 @@ import {
   background,
   border,
   variant,
+  system,
 } from 'styled-system';
 import {styled} from '../styled';
 import {isNative} from '../helpers';
@@ -30,6 +31,12 @@ const styles = compose(
   position,
   shadow,
 );
+
+// const elevation = system({
+//   prop: 'elevation',
+//   cssProperty: 'boxShadow',
+//   scale: 'shadows',
+// });
 
 const StyledBox = styled[isNative ? 'View' : 'div']`
   ${variant({

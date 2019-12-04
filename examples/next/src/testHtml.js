@@ -3,9 +3,6 @@ export default `
 .red {
   background-color: red;
 }
-.test {
-  color: blue;
-}
 .center {
   display: flex; 
   justify-content: center; 

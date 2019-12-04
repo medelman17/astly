@@ -13,8 +13,11 @@ const Index = () => {
 
   return (
     <>
+      <Flex border={2}>Hi</Flex>
       <Flex
         bg={thisTheme.colors.primary}
+        border={2}
+        borderStyle="solid"
         py="1"
         flexGrow={1}
         variant="col"

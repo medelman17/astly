@@ -1,57 +1,38 @@
-import React from "react";
-import { isNative } from "../helpers";
-import defaultComponentMap from "../maps";
-import Box from "../components/Box";
-import withRoot from "../components/Root";
-import { parseHtml } from "../parsers";
+import React from 'react';
+import {isNative} from '../helpers';
+import defaultComponentMap from '../maps';
+import Box from '../components/Box';
+import withRoot from '../components/Root';
+import {parseHtml} from '../parsers';
 
-class RenderHtml extends React.Component {
-  static defaultProps = {
-    componentMap: defaultComponentMap,
-    inspectNewChildren: children => children,
-    theme: {}
-  };
-  state = {
-    components: null
-  };
+export function RenderHTML({
+  componentMap = defaultComponentMap,
+  inspectNewChildren = c => c,
+  theme = {},
+  html = `<div></div>`,
+  ...props
+}) {
+  const [newChildren, setNewChildren] = React.useState(null);
 
-  componentDidMount() {
-    const { html, componentMap, ...props } = this.props;
-    if (!html) {
-      throw new Error("No html");
+  React.useEffect(() => {
+    function makeNewChildren(components) {
+      return isNative
+        ? React.createElement(Box, props, [components.props.children])
+        : React.createElement(Box, props, [components]);
     }
-    parseHtml({ components: componentMap, ...props }).process(
+    parseHtml({components: componentMap, ...props}).process(
       html,
       (err, file) => {
         if (err) {
-          console.log("Error", err);
+          console.log('Error', err);
         } else {
-          this.setState(prevState => ({ ...prevState, components: file }));
+          setNewChildren(makeNewChildren(file.contents));
         }
-      }
+      },
     );
-  }
+  }, [html]);
 
-  renderNewChildren = () => {
-    const { inspectNewChildren, ...props } = this.props;
-    if (this.state.components === null) {
-      return null;
-    }
-    return isNative
-      ? React.createElement(Box, props, [
-          this.state.components.contents.props.children
-        ])
-      : React.createElement(Box, props, [this.state.components.contents]);
-  };
-
-  render() {
-    const { inspectNewChildren, ...props } = this.props;
-    return (
-      <React.Fragment>
-        {inspectNewChildren(this.renderNewChildren())}
-      </React.Fragment>
-    );
-  }
+  return <React.Fragment>{inspectNewChildren(newChildren)}</React.Fragment>;
 }
 
-export default withRoot(RenderHtml);
+export default withRoot(RenderHTML);

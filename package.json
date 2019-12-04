@@ -37,6 +37,8 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-macros": "^2.6.1",
     "css-to-react-native": "^3.0.0",
+    "html-whitespace-sensitive-tag-names": "^1.0.1",
+    "rehype-preset-minify": "^4.0.0",
     "husky": "^3.1.0",
     "lerna": "3.17.0",
     "lint-staged": "^9.5.0",

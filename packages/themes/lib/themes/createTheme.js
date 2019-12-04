@@ -13,6 +13,7 @@ export function createTheme(userTheme) {
     space,
     fonts,
     fontSizes,
+    shadows,
     text,
     box,
     table,
@@ -24,7 +25,10 @@ export function createTheme(userTheme) {
     fontSizes: userTheme.fontSizes ? userTheme.fontSizes : Default.fontSizes,
     space: userTheme.space ? userTheme.space : Default.space,
     fonts: handleThemeMerge(Default.fonts, userTheme.fonts),
+    shadows: userTheme.shadows ? userTheme.shadows : Default.shadows,
   };
+
+  // console.log('THEME VALUES, ', themeValues);
 
   const themeVariants = {
     text: Variants.getTextVariants({...themeValues}),
@@ -38,6 +42,7 @@ export function createTheme(userTheme) {
     fontSizes: getSizeObject(themeValues.fontSizes),
     space: getSpaceObject(themeValues.space),
     fonts: themeValues.fonts,
+    shadows: themeValues.shadows,
     text: {...themeVariants.text, ...text},
     box: {...themeVariants.box, ...box},
     table: {...themeVariants.table, ...table},

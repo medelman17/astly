@@ -55,14 +55,16 @@ module.exports = {
   title: 'My Awesome Library',
   frameComponent: './src/Frame.js',
   themes: './src/themes',
-  widths: [320, 375, 768, 1024],
+  widths: [375, 768, 1024],
   port: 9000,
   openBrowser: false,
   exampleCode,
+  typeScriptFiles: ['**/*.{ts,tsx}', '!**/node_modules'],
+  typeDeclarations: ['@types/**/*.d.ts'],
   webpackConfig: () => ({
     // Custom webpack config goes here...
     resolve: {
-      // extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
         react: path.resolve('../../node_modules/react'),
       },
@@ -73,6 +75,26 @@ module.exports = {
 
     module: {
       rules: [
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-typescript',
+                '@babel/preset-react',
+              ],
+              plugins: [
+                '@babel/plugin-proposal-nullish-coalescing-operator',
+                '@babel/plugin-proposal-optional-chaining',
+                '@babel/plugin-transform-runtime',
+                '@babel/plugin-proposal-class-properties',
+              ],
+            },
+          },
+        },
         {
           test: /\.s[ac]ss$/i,
           use: [
@@ -88,6 +110,7 @@ module.exports = {
           test: /\.js$/,
           use: {
             loader: 'babel-loader',
+
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [

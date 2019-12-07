@@ -1,21 +1,26 @@
-import * as React from "react";
-import { isNative } from "../helpers";
+import React, {Component, createRef} from 'react';
+import {isNative} from '../helpers';
 
-export default class Script extends React.Component {
+class Script extends Component {
   constructor(props) {
     super(props);
-    this.ref = React.createRef();
+    this.ref = createRef();
   }
 
   componentDidMount() {
-    const { children, ...props } = this.props;
-    const newScript = Object.assign(document.createElement("script"), props, {
-      textContent: children
+    const {children, ...props} = this.props;
+    if (isNative === true) {
+      return;
+    }
+    const newScript = Object.assign(document.createElement('script'), props, {
+      textContent: children,
     });
     this.ref.current.replaceWith(newScript);
   }
 
   render() {
-    return <script ref={this.ref} />;
+    return isNative === true ? null : <script ref={this.ref} />;
   }
 }
+
+export default Script;

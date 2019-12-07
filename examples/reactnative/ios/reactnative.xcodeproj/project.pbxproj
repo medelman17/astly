@@ -18,6 +18,15 @@
 		2DCD954D1E0B4F2C00145EB5 /* reactnativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* reactnativeTests.m */; };
 		BABEA4B4FDF882D704F976BD /* libPods-reactnative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EBD67072FED44B788E5B5D /* libPods-reactnative-tvOSTests.a */; };
 		BCD0B2ADCD7A32935F456F38 /* libPods-reactnativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 343B7789590D6F10E16D6BDC /* libPods-reactnativeTests.a */; };
+		CA8ACD03238C416000B2FABE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD01238C416000B2FABE /* fonts */; };
+		CA8ACD04238C416000B2FABE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD01238C416000B2FABE /* fonts */; };
+		CA8ACD05238C416000B2FABE /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD01238C416000B2FABE /* fonts */; };
+		CA8ACD08238C429F00B2FABE /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD07238C429F00B2FABE /* Montserrat-Regular.ttf */; };
+		CA8ACD0A238C42D500B2FABE /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD09238C42D500B2FABE /* Nunito-Regular.ttf */; };
+		CA8ACD0C238C678100B2FABE /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD0B238C678100B2FABE /* Nunito-Bold.ttf */; };
+		CA8ACD0E238C678B00B2FABE /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD0D238C678B00B2FABE /* Montserrat-Bold.ttf */; };
+		CA8ACD10238C680A00B2FABE /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD0F238C680A00B2FABE /* Montserrat-Italic.ttf */; };
+		CA8ACD12238C681100B2FABE /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA8ACD11238C681100B2FABE /* Nunito-Italic.ttf */; };
 		D2DB888180947A7B9DC4747F /* libPods-reactnative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F997CB34F81F40C0E032125 /* libPods-reactnative.a */; };
 		E82DBF22E337B4353E80619A /* libPods-reactnative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE921F2282777355C8C22CE5 /* libPods-reactnative-tvOS.a */; };
 /* End PBXBuildFile section */
@@ -62,6 +71,13 @@
 		6F997CB34F81F40C0E032125 /* libPods-reactnative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DBB1698D9E5AE305C644D60 /* Pods-reactnative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative.debug.xcconfig"; path = "Target Support Files/Pods-reactnative/Pods-reactnative.debug.xcconfig"; sourceTree = "<group>"; };
 		BE921F2282777355C8C22CE5 /* libPods-reactnative-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-reactnative-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA8ACD01238C416000B2FABE /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../assets/fonts; sourceTree = "<group>"; };
+		CA8ACD07238C429F00B2FABE /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		CA8ACD09238C42D500B2FABE /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito/Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		CA8ACD0B238C678100B2FABE /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito/Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		CA8ACD0D238C678B00B2FABE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		CA8ACD0F238C680A00B2FABE /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Italic.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		CA8ACD11238C681100B2FABE /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito/Nunito-Italic.ttf"; sourceTree = "<group>"; };
 		E26F3DF9A7DFACB7F73E9B83 /* Pods-reactnative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative.release.xcconfig"; path = "Target Support Files/Pods-reactnative/Pods-reactnative.release.xcconfig"; sourceTree = "<group>"; };
 		E800A482F5BB5E0A01041C31 /* Pods-reactnative-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnative-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-reactnative-tvOSTests/Pods-reactnative-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E93F9E432A38C6F6E9C3297A /* Pods-reactnativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativeTests.debug.xcconfig"; path = "Target Support Files/Pods-reactnativeTests/Pods-reactnativeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +175,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CA8ACD11238C681100B2FABE /* Nunito-Italic.ttf */,
+				CA8ACD0F238C680A00B2FABE /* Montserrat-Italic.ttf */,
+				CA8ACD0D238C678B00B2FABE /* Montserrat-Bold.ttf */,
+				CA8ACD0B238C678100B2FABE /* Nunito-Bold.ttf */,
+				CA8ACD09238C42D500B2FABE /* Nunito-Regular.ttf */,
+				CA8ACD07238C429F00B2FABE /* Montserrat-Regular.ttf */,
+				CA8ACD00238C412800B2FABE /* fonts */,
 				13B07FAE1A68108700A75B9A /* reactnative */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* reactnativeTests */,
@@ -195,6 +218,14 @@
 				5F92C7099D48823B85EBCB40 /* Pods-reactnativeTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CA8ACD00238C412800B2FABE /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CA8ACD01238C416000B2FABE /* fonts */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8ACD03238C416000B2FABE /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +372,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CA8ACD08238C429F00B2FABE /* Montserrat-Regular.ttf in Resources */,
+				CA8ACD0C238C678100B2FABE /* Nunito-Bold.ttf in Resources */,
+				CA8ACD12238C681100B2FABE /* Nunito-Italic.ttf in Resources */,
+				CA8ACD0E238C678B00B2FABE /* Montserrat-Bold.ttf in Resources */,
+				CA8ACD10238C680A00B2FABE /* Montserrat-Italic.ttf in Resources */,
+				CA8ACD0A238C42D500B2FABE /* Nunito-Regular.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				CA8ACD04238C416000B2FABE /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +395,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8ACD05238C416000B2FABE /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

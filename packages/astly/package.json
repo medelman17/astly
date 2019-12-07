@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.15",
+  "version": "0.0.20",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -13,9 +13,8 @@
     "render"
   ],
   "author": "Michael Jopseph Edelman <michael@fabulas.io>",
-  "license": "MIT",
+  "license": "GNU AGPLv3",
   "main": "dist/index.js",
-  "module": "dist/main.esm.prod.js",
   "react-native": "dist/index.native.js",
   "directories": {
     "lib": "lib",
@@ -34,31 +33,56 @@
     "test": "jest",
     "build": "webpack --config ./webpack.config.js --env.env=prod",
     "build:clean": "rm -rf ./dist",
+    "predev": "npm run build:clean && yarn postbuild",
     "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
     "profile": "webpack --mode production --profile --json --env.env=prod > stats.json",
     "prebuild": "npm run build:clean",
-    "postbuild": "./scripts/postbuild/postbuild.sh"
+    "postbuild": "./scripts/postbuild/postbuild.sh",
+    "playroom:start": "IS_NATIVE=FALSE playroom start",
+    "playroom:build": "playroom build"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@fabulas/themes": "*",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "css-to-react-native": "^3.0.0",
     "deepmerge": "^4.1.1",
     "dotenv-webpack": "^1.7.0",
+    "hast-to-hyperscript": "^7.0.4",
     "hast-util-has-property": "^1.0.3",
     "hast-util-is-element": "^1.0.3",
     "hast-util-sanitize": "^2.0.1",
     "hastscript": "^5.1.0",
+    "html-whitespace-sensitive-tag-names": "^1.0.1",
     "jest": "^24.9.0",
+    "pluralize": "^8.0.0",
+    "polished": "^3.4.2",
+    "postcss": "^7.0.23",
     "prop-types": "^15.7.2",
+    "react-is": "^16.12.0",
+    "react-native-typography": "^1.4.1",
+    "rehype-dom-parse": "^2.0.1",
     "rehype-minify-whitespace": "^3.0.0",
     "rehype-parse": "^6.0.1",
     "rehype-preset-minify": "^4.0.0",
     "rehype-react": "^4.0.1",
-    "styled-components": "^4.4.0",
-    "styled-components-modifiers": "^1.2.5",
+    "sass-loader": "^8.0.0",
+    "scss-loader": "^0.0.1",
+    "style-loader": "^1.0.0",
+    "styled-components": "^5.0.0-rc.2",
     "styled-system": "^5.1.2",
+    "typography": "^0.16.19",
     "unified": "^8.4.1",
     "unist-util-visit": "^2.0.0",
-    "webpack-cli": "^3.3.9"
-  }
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {}
 }

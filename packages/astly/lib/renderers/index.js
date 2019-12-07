@@ -1,3 +1,3 @@
-import RenderHtml from "./RenderHtml";
-
-export { RenderHtml };
+import RenderHtml from './RenderHtml';
+import RenderTree from './RenderTree';
+export {RenderHtml, RenderTree};

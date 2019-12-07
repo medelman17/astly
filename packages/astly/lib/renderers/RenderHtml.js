@@ -1,60 +1,43 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import { isNative } from "../helpers";
-import defaultComponentMap from "../maps";
-import Box from "../components/Box";
-import { parseHtml } from "../parsers";
+import React from 'react';
+import {parseHtml} from '../parsers';
+import defaultComponentMap from '../maps';
+import Box from '../components/Box';
+import withRoot from '../components/Root';
 
-class RenderHtml extends React.Component {
-  static defaultProps = {
-    componentMap: defaultComponentMap,
-    inspectNewChildren: children => children,
-    theme: {}
-  };
-  state = {
-    components: null
-  };
+export function RenderHTML({
+  componentMap,
+  inspectNewChildren,
+  theme,
+  html,
+  ...props
+}) {
+  const [newChildren, setNewChildren] = React.useState(null);
+  const {astly} = props;
 
-  componentDidMount() {
-    const { html, componentMap, ...props } = this.props;
-    if (!html) {
-      throw new Error("No html");
+  React.useEffect(() => {
+    function makeNewChildren(components) {
+      return React.createElement(Box, props, [components]);
     }
-    parseHtml({ components: componentMap, ...props }).process(
+    parseHtml({components: componentMap, astly, ...props}).process(
       html,
       (err, file) => {
         if (err) {
-          console.log("Error", err);
+          console.log('Error', err);
         } else {
-          this.setState(prevState => ({ ...prevState, components: file }));
+          setNewChildren(makeNewChildren(file.contents));
         }
-      }
+      },
     );
-  }
+  }, [html, astly]);
 
-  renderNewChildren = () => {
-    const { inspectNewChildren, ...props } = this.props;
-    if (this.state.components === null) {
-      return null;
-    }
-    return isNative
-      ? React.createElement(Box, props, [
-          this.state.components.contents.props.children
-        ])
-      : React.createElement(Box, props, [this.state.components.contents]);
-  };
-
-  render() {
-    const { inspectNewChildren, ...props } = this.props;
-
-    return (
-      <React.Fragment>
-        <ThemeProvider theme={this.props.theme}>
-          {inspectNewChildren(this.renderNewChildren())}
-        </ThemeProvider>
-      </React.Fragment>
-    );
-  }
+  return inspectNewChildren(newChildren);
 }
 
-export default RenderHtml;
+RenderHTML.defaultProps = {
+  componentMap: defaultComponentMap,
+  inspectNewChildren: c => c,
+  theme: {},
+  html: `<div></div>`,
+};
+
+export default withRoot(RenderHTML);

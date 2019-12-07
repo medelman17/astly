@@ -1,33 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
-  Text,
   StatusBar,
 } from 'react-native';
-
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  Text,
+  RenderHtml,
+  RenderTree,
+  Box,
+  Flex,
+  ComponentMap,
+} from '@fabulas/astly';
+import {one, two} from '@fabulas/themes';
 
-import {Box, RenderHtml} from 'astly';
+import testHtml from '@fabulas/tests';
 
-const App: () => React$Node = () => {
-  console.log('hi');
+const tools = {
+  onClick(node) {
+    alert(JSON.stringify(node, null, 2));
+  },
+  navigate(node) {
+    alert(JSON.stringify(node, null, 2));
+  },
+};
+
+const App = () => {
+  const [currentTheme, toggleTheme] = React.useState(false);
+  const [currentHTML, toggleHTML] = React.useState(true);
+  const thisTheme = currentTheme === true ? one : two;
+  const thisHtml = currentHTML === true ? `<div></div>` : testHtml;
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -35,20 +41,46 @@ const App: () => React$Node = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
-            <RenderHtml
-              html={`<span>Test</span>`}
-              inspectNewChildren={children => {
-                console.log('children', children);
-                return children;
-              }}
-            />
+            <Flex
+              border={2}
+              bg={thisTheme.colors.primary}
+              py="1"
+              alignItems="center"
+              justifyContet="center">
+              <Text
+                color="white"
+                onPress={() => {
+                  toggleTheme(!currentTheme);
+                }}>
+                Toggle Theme
+              </Text>
+            </Flex>
+            <Flex
+              border={2}
+              bg={thisTheme.colors.primary}
+              py="1"
+              alignItems="center"
+              justifyContet="center">
+              <Text
+                color="white"
+                onPress={() => {
+                  toggleHTML(!currentHTML);
+                }}>
+                Toggle HTML
+              </Text>
+            </Flex>
+            {
+              <RenderHtml
+                html={thisHtml}
+                theme={thisTheme}
+                tools={tools}
+                componentMap={{
+                  ...ComponentMap,
+                  div2: Box,
+                }}
+              />
+            }
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -66,6 +98,7 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+    paddingHorizontal: 10,
   },
   sectionContainer: {
     marginTop: 32,

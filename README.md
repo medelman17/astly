@@ -1,5 +1,7 @@
 # 🌲 🌲 Astly 🌲 🌲
 
+[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+
 Astly is a VERY EARLY STAGE javascript library for rendering static content (e.g., html) into react components that work on web and native. It's also a primitive UI library that could be used to build custom, platform-agnostic components. Powered by the [`Unified`](https://github.com/unifiedjs/unified) ecosystem, [`Styled Components`](https://github.com/styled-components/styled-components), [`Styled System`](https://github.com/styled-system/styled-system), and [`React`](https://github.com/facebook/react).
 
 You write something like:

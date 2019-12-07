@@ -1,0 +1,47 @@
+{
+  "name": "@fabulas/themes",
+  "version": "0.0.5",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "private": false,
+  "author": "Michael Jopseph Edelman <michael@fabulas.io>",
+  "main": "dist/build.js",
+  "react-native": "dist/build.native.js",
+  "directories": {
+    "lib": "lib",
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --config ./webpack.config.js --env.env=prod",
+    "build:clean": "rm -rf ./dist",
+    "predev": "npm run build:clean && yarn postbuild",
+    "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
+    "profile": "webpack --mode production --profile --json --env.env=prod > stats.json",
+    "prebuild": "npm run build:clean",
+    "postbuild": "./scripts/postbuild/postbuild.sh"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.7.1",
+    "jest": "^24.9.0",
+    "pluralize": "^8.0.0",
+    "polished": "^3.4.2",
+    "react-native-typography": "^1.4.1",
+    "styled-system": "^5.1.2",
+    "typography": "^0.16.19",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

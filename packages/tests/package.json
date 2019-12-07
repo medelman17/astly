@@ -1,0 +1,7 @@
+{
+  "name": "@fabulas/tests",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Michael Edelman",
+  "license": "MIT"
+}

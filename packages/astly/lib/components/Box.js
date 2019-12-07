@@ -13,7 +13,7 @@ import {
   variant,
   system,
 } from 'styled-system';
-import {styled} from '../styled';
+import styled from 'styled-components';
 import {isNative} from '../helpers';
 
 export default function Box({children, ...props}) {

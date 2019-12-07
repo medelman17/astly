@@ -1,26 +1,24 @@
 import React from 'react';
-import {isNative} from '../helpers';
+import {parseHtml} from '../parsers';
 import defaultComponentMap from '../maps';
 import Box from '../components/Box';
 import withRoot from '../components/Root';
-import {parseHtml} from '../parsers';
 
 export function RenderHTML({
-  componentMap = defaultComponentMap,
-  inspectNewChildren = c => c,
-  theme = {},
-  html = `<div></div>`,
+  componentMap,
+  inspectNewChildren,
+  theme,
+  html,
   ...props
 }) {
   const [newChildren, setNewChildren] = React.useState(null);
+  const {astly} = props;
 
   React.useEffect(() => {
     function makeNewChildren(components) {
-      return isNative
-        ? React.createElement(Box, props, [components.props.children])
-        : React.createElement(Box, props, [components]);
+      return React.createElement(Box, props, [components]);
     }
-    parseHtml({components: componentMap, ...props}).process(
+    parseHtml({components: componentMap, astly, ...props}).process(
       html,
       (err, file) => {
         if (err) {
@@ -30,9 +28,16 @@ export function RenderHTML({
         }
       },
     );
-  }, [html]);
+  }, [html, astly]);
 
-  return <React.Fragment>{inspectNewChildren(newChildren)}</React.Fragment>;
+  return inspectNewChildren(newChildren);
 }
+
+RenderHTML.defaultProps = {
+  componentMap: defaultComponentMap,
+  inspectNewChildren: c => c,
+  theme: {},
+  html: `<div></div>`,
+};
 
 export default withRoot(RenderHTML);

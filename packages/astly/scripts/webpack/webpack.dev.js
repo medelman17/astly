@@ -14,7 +14,6 @@ function getOutput(opts) {
       };
     default:
       return {
-        library: 'astly',
         libraryTarget: opts.buildType,
         filename:
           opts.buildFor === 'native'

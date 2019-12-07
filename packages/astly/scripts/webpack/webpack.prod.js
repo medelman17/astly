@@ -1,19 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 function getOutput(opts) {
   switch (opts.buildType) {
     case 'esm':
       return {
         filename:
-          opts.buildFor === 'native' ? `astly.native.esm.js` : `astly.esm.js`,
+          opts.buildFor === 'native' ? `astly.native.esm.js` : `[name].esm.js`,
         path: path.resolve(__dirname, '../../', opts.path),
-        globalObject: "typeof self !== 'undefined' ? self : this",
+        publicPath: '',
       };
     default:
       return {
-        library: 'astly',
         libraryTarget: opts.buildType,
         filename:
           opts.buildFor === 'native'
@@ -25,6 +25,7 @@ function getOutput(opts) {
             : `[name].${opts.buildType}.bundle.production.js`,
         umdNamedDefine: true,
         path: path.resolve(__dirname, '../../', opts.path),
+        publicPath: '',
         globalObject: "typeof self !== 'undefined' ? self : this",
       };
   }
@@ -56,6 +57,14 @@ function getPlugins(opts) {
     }),
     new webpack.ProvidePlugin({
       react: path.resolve(__dirname, 'node_modules/react'),
+      'styled-components': path.resolve(
+        __dirname,
+        'node_modules/styled-components',
+      ),
+      'styled-components/native': path.resolve(
+        __dirname,
+        'node_modules/styled-components/native',
+      ),
     }),
   ];
 }
@@ -72,12 +81,13 @@ function getWebpackConfig(opts) {
     devtool: 'none',
     optimization: {
       usedExports: true,
+      minimize: true,
+      minimizer: [new TerserPlugin()],
     },
     resolve: {
       // extensions: [".ts", ".tsx", ".js", ".jsx"],
       alias: {
         react: path.resolve('./node_modules/react'),
-        '@fabulas/themes': path.resolve('../../../themes'),
       },
     },
     externals: {
@@ -101,6 +111,7 @@ function getWebpackConfig(opts) {
     output: getOutput(opts),
     module: getModule(opts),
     plugins: getPlugins(opts),
+    // target: 'node',
   };
 }
 

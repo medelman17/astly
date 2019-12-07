@@ -10,7 +10,7 @@ const blacklist = require('metro-config/src/defaults/blacklist');
 const watchFolders = [
   path.join(__dirname, '../../packages/astly'),
   path.join(__dirname, '../../packages/themes'),
-  path.join(__dirname, '../../node_modules/react'),
+  // path.join(__dirname, '../../node_modules/react'),
 ];
 
 const extraNodeModules = new Proxy(
@@ -18,7 +18,7 @@ const extraNodeModules = new Proxy(
     '@fabulas/astly': path.join(__dirname, '../../packages/astly'),
     '@fabulas/themes': path.join(__dirname, '../../packages/themes'),
     '@babel/runtime': path.join(__dirname, '../../node_modules/@babel/runtime'),
-    react: path.join(__dirname, '../../node_modules/react'),
+    // react: path.join(__dirname, '../../node_modules/react'),
   },
   {
     get: (target, name) => {

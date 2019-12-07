@@ -1,10 +1,8 @@
-import React from "react";
-import TableRow from "./TableRow";
+import React from 'react';
+import TableRow from './TableRow';
 
-import { styled } from "../styled";
-
-function TableHeader({ children, ...props }) {
-  const thisRow = React.useRef("header");
+function TableHeader({children, ...props}) {
+  const thisRow = React.useRef('header');
   return (
     <TableRow variant="header" ref={thisRow} {...props}>
       {children}

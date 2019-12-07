@@ -14,6 +14,8 @@
       "**/playroom/**",
       "**/css-to-react-native",
       "**/css-to-react-native/**",
+      "**/styled-components",
+      "**/styled-components/**",
       "**/react-is",
       "**/react-is/**"
     ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import {RenderHtml, Text, Flex, ComponentMap} from '@fabulas/astly';
+import {RenderHtml, Text, Flex, ComponentMap, RenderTree} from '@fabulas/astly';
 import {one, two} from '@fabulas/themes';
 import testHtml from '../src/testHtml';
 
@@ -8,8 +8,6 @@ import '../src/styles.scss';
 const Index = () => {
   const [currentTheme, toggleTheme] = React.useState(false);
   const thisTheme = currentTheme === true ? one : two;
-
-  console.log('Current Theme Overrides:', JSON.stringify(thisTheme, null, 2));
 
   return (
     <>
@@ -31,6 +29,7 @@ const Index = () => {
           Toggle Theme
         </Text>
       </Flex>
+
       <RenderHtml html={testHtml} theme={thisTheme} />
     </>
   );

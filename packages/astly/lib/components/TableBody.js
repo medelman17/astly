@@ -1,9 +1,7 @@
-import React from "react";
-import TableRow from "./TableRow";
+import React from 'react';
+import TableRow from './TableRow';
 
-import { styled } from "../styled";
-
-function TableBody({ children, ...props }) {
+function TableBody({children, ...props}) {
   return (
     <TableRow variant="body" {...props}>
       {children}

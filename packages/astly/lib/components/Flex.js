@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from './Box';
-import {styled} from '../styled';
+import styled from 'styled-components';
 import {isNative} from '../helpers';
 import {flexbox, compose, variant} from 'styled-system';
 

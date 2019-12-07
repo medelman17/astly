@@ -7,7 +7,14 @@ import {
   StatusBar,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Text, RenderHtml, RenderTree, Flex, ComponentMap} from '@fabulas/astly';
+import {
+  Text,
+  RenderHtml,
+  RenderTree,
+  Box,
+  Flex,
+  ComponentMap,
+} from '@fabulas/astly';
 import {one, two} from '@fabulas/themes';
 
 import testHtml from './testHtml';
@@ -63,7 +70,17 @@ const App = () => {
                 Toggle HTML
               </Text>
             </Flex>
-            {<RenderHtml html={thisHtml} theme={thisTheme} tools={tools} />}
+            {
+              <RenderHtml
+                html={thisHtml}
+                theme={thisTheme}
+                tools={tools}
+                componentMap={{
+                  ...ComponentMap,
+                  div2: Box,
+                }}
+              />
+            }
           </View>
         </ScrollView>
       </SafeAreaView>

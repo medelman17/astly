@@ -1,14 +1,14 @@
-import React from "react";
-import Flex from "../components/Flex";
+import React from 'react';
+import Flex from '../components/Flex';
 
-import { styled } from "../styled";
-import { flexbox, compose, variant } from "styled-system";
-import Table from "./Table";
+import styled from 'styled-components';
+import {flexbox, compose, variant} from 'styled-system';
+import Table from './Table';
 
-function TableRow({ children, forwardedRef, ...props }) {
+function TableRow({children, forwardedRef, ...props}) {
   let isHeader = false;
   if (forwardedRef && forwardedRef !== null) {
-    isHeader = forwardedRef.current === "header";
+    isHeader = forwardedRef.current === 'header';
   }
 
   return (
@@ -24,10 +24,10 @@ const StyledTableRow = styled(Flex)`
   justify-content: space-around;
   flex-grow: 1;
   ${variant({
-    scale: "table.row",
+    scale: 'table.row',
     variants: {
-      normal: {}
-    }
+      normal: {},
+    },
   })}
 `;
 
@@ -36,5 +36,5 @@ export default React.forwardRef((props, ref) => {
 });
 
 TableRow.defaultProps = {
-  variant: "normal"
+  variant: 'normal',
 };

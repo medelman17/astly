@@ -1,6 +1,7 @@
 const getProdBuildConfigs = require('./scripts/webpack/webpack.prod.js');
 const getDevBuildConfigs = require('./scripts/webpack/webpack.dev.js');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const prodOptions = [
   {
     buildFor: 'web',
@@ -87,14 +88,19 @@ const client = {
   },
   target: 'node',
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, '../../dist/'),
     publicPath: '',
     filename: 'build.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
   },
+  plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, `.web.env`),
+    }),
+  ],
 };
 
-const server = {
+const native = {
   entry: './lib/index.js',
   module: {
     rules: [
@@ -105,32 +111,19 @@ const server = {
         },
       },
     ],
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist/'),
-    publicPath: '',
-    filename: 'build.js',
-    libraryTarget: 'umd',
-  },
-  entry: './lib/index.js',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist/'),
-    publicPath: '',
-    filename: 'server.js',
-    libraryTarget: 'umd',
   },
   target: 'node',
-  externals: [nodeExternals()],
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: '',
+    filename: 'build.native.js',
+    libraryTarget: 'commonjs2',
+  },
+  plugins: [
+    new Dotenv({
+      path: path.resolve(__dirname, `.native.env`),
+    }),
+  ],
 };
 
-module.exports = [client, server];
+module.exports = [client, native];

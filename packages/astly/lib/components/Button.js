@@ -1,6 +1,6 @@
 import React from 'react';
 import Flex from './Flex';
-import {styled} from '../styled';
+import styled from 'styled-components';
 import {isNative} from '../helpers';
 import {
   flexbox,

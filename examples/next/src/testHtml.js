@@ -15,6 +15,13 @@ export default `
   color: white; 
 }
 </style>
+
+<script>
+
+console.log('nothing should happen on native')
+
+
+</script>
 <div>
     <h1>
       HTML, CSS, & React Native

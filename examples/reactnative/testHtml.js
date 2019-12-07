@@ -15,7 +15,14 @@ export default `
   color: white; 
 }
 </style>
-<div>
+<script>
+
+console.log('nothing should happen on native')
+
+
+
+</script>
+<div class="red" style="background-color: red;">
     <h1>
       HTML, CSS, & React Native
     </h1>

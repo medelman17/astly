@@ -9,6 +9,7 @@ import TableRow from './TableRow';
 import TableBody from './TableBody';
 import Button from './Button';
 import Media from './Media';
+import {AstlyProvider, useAstly} from './Provider';
 
 export {
   Box,
@@ -22,5 +23,7 @@ export {
   TableBody,
   Button,
   Media,
+  AstlyProvider,
+  useAstly,
 };
 // comment to update webpack

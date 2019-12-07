@@ -11,7 +11,7 @@ import {
   variant,
 } from 'styled-system';
 
-import {styled} from '../styled';
+import styled from 'styled-components';
 import {isNative} from '../helpers';
 import Box from './Box';
 

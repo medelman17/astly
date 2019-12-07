@@ -10,7 +10,7 @@
     "example": "yarn ios"
   },
   "dependencies": {
-    "@fabulas/astly": "0.0.16-beta.0",
+    "@fabulas/astly": "*",
     "@fabulas/themes": "*",
     "css-to-react-native": "^3.0.0",
     "react": "^16.12.0",

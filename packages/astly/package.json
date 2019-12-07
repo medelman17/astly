@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -13,9 +13,8 @@
     "render"
   ],
   "author": "Michael Jopseph Edelman <michael@fabulas.io>",
-  "license": "MIT",
+  "license": "GNU AGPLv3",
   "main": "dist/index.js",
-  "module": "dist/main.esm.prod.js",
   "react-native": "dist/index.native.js",
   "directories": {
     "lib": "lib",
@@ -44,12 +43,13 @@
   },
   "peerDependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0-rc.2"
   },
   "devDependencies": {
-    "@fabulas/themes": "^0.0.1",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-transform-runtime": "^7.7.4",
+    "@fabulas/themes": "*",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "css-to-react-native": "^3.0.0",
@@ -68,6 +68,7 @@
     "prop-types": "^15.7.2",
     "react-is": "^16.12.0",
     "react-native-typography": "^1.4.1",
+    "rehype-dom-parse": "^2.0.1",
     "rehype-minify-whitespace": "^3.0.0",
     "rehype-parse": "^6.0.1",
     "rehype-preset-minify": "^4.0.0",
@@ -79,7 +80,9 @@
     "styled-system": "^5.1.2",
     "typography": "^0.16.19",
     "unified": "^8.4.1",
-    "unist-util-visit": "^2.0.0"
+    "unist-util-visit": "^2.0.0",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {}
 }

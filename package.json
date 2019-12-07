@@ -1,39 +1,59 @@
 {
-  "name": "root",
   "private": true,
   "workspaces": {
     "packages": [
-      "packages/**",
-      "examples/**"
+      "packages/*",
+      "examples/*"
     ],
     "nohoist": [
       "**/react-native",
       "**/react-native/**",
-      "**/react",
-      "**/react/**"
+      "**/@babel/runtime",
+      "**/@babel/runtime/**",
+      "**/playroom",
+      "**/playroom/**",
+      "**/css-to-react-native",
+      "**/css-to-react-native/**",
+      "**/styled-components",
+      "**/styled-components/**",
+      "**/react-is",
+      "**/react-is/**"
     ]
   },
   "scripts": {
+    "prettier": "prettier \"packages/**/{src,test,examples}/**/*.js\" --write",
     "build": "lerna run --ignore 'next' build ",
     "dev": "lerna run dev",
     "bootstrap": "lerna bootstrap",
+    "publish": "lerna publish",
     "clean": "lerna clean",
     "test": "lerna run --ignore 'next' test "
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/runtime": "^7.7.4",
+    "@react-native-community/eslint-config": "^0.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-macros": "^2.6.1",
+    "css-to-react-native": "^3.0.0",
+    "html-whitespace-sensitive-tag-names": "^1.0.1",
+    "rehype-preset-minify": "^4.0.0",
+    "husky": "^3.1.0",
     "lerna": "3.17.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "lint-staged": "^9.5.0",
+    "metro-react-native-babel-preset": "^0.51.1",
+    "node-sass": "^4.13.0",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-is": "^16.12.0",
     "react-native": "^0.61.2",
+    "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
-  },
-  "dependencies": {
-    "@react-native-community/cli": "^2.9.0"
+    "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2"
   }
 }

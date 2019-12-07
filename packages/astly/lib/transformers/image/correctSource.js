@@ -1,26 +1,27 @@
-"use strict";
+'use strict';
 
-import visit from "unist-util-visit";
-import { isNative } from "../../helpers";
+import visit from 'unist-util-visit';
+import {isNative} from '../../helpers';
 
-export { correctSource };
+export {correctSource};
 
 function correctSource(props) {
   return transformer;
 
   function transformer(tree) {
-    visit(tree, "element", visitor);
+    visit(tree, 'element', visitor);
   }
 
   function visitor(node, index, parent) {
     const {
       tagName,
-      properties: { src, srcSet }
+      properties: {src, srcSet},
     } = node;
-    if (tagName !== "img" || typeof src !== "string" || !isNative) {
+    if (tagName !== 'img' || typeof src !== 'string' || !isNative) {
       return;
     }
-    node.properties.source = src;
+    node.properties.source = {};
+    node.properties.source.uri = src;
     node.properties.src = undefined;
   }
 }

@@ -10,6 +10,7 @@ const blacklist = require('metro-config/src/defaults/blacklist');
 const watchFolders = [
   path.join(__dirname, '../../packages/astly'),
   path.join(__dirname, '../../packages/themes'),
+  path.join(__dirname, '../../packages/tests'),
   // path.join(__dirname, '../../node_modules/react'),
 ];
 

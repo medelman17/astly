@@ -17,7 +17,7 @@ import {
 } from '@fabulas/astly';
 import {one, two} from '@fabulas/themes';
 
-import testHtml from './testHtml';
+import testHtml from '@fabulas/tests';
 
 const tools = {
   onClick(node) {

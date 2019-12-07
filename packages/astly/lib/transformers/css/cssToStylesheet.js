@@ -50,7 +50,11 @@ function handleCssParsing(root) {
     if (children && children.length > 0) {
       children.map(parseCssNodes);
     }
+    // console.log(JSON.stringify(node, null, 2));
     if (node.type === 'decl') {
+      if (node.parent.parent.type === 'atrule') {
+        return;
+      }
       const key = getStyleKey(node);
       if (!map[key]) {
         map[key] = [];

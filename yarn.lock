@@ -1766,14 +1766,14 @@
     which "^1.3.1"
 
 "@fabulas/astly@*":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.19.tgz#07c28ac32d9c1519203c5b85e7bfcf4be7e5693a"
-  integrity sha512-QMbQpFMIdeNgg4eqk6k/5J8OZfrdnpyzsouCwgIiR5onBS9o9c/durBhGqgP0CHs+jecbzm117BwLBHRRlCjhw==
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.20.tgz#0177eef661f89d6f06e00612008c5b349911342b"
+  integrity sha512-cCjWAZUnRCMAdQ5mNZlF2Jdgz5B8dILWBV7SPiMGzD63JFmVTFm6VYFY2bYi0NXcBjnC2HvdEUHPv1eBFFlPMg==
 
-"@fabulas/astly@^0.0.18-beta.1":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@fabulas/astly/-/astly-0.0.18.tgz#d4d9e347cff9a0edb4704832a4f96c805ce8e72e"
-  integrity sha512-a0n7pkJDtio9oZvDOMYO/cCEIyoC2qYwm3cnO+LVcOc/ewymfrR11KsSOHztm4ZLyAZojnBiy28xwgl3ZG9YLQ==
+"@fabulas/themes@0.0.4", "@fabulas/themes@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@fabulas/themes/-/themes-0.0.4.tgz#90ec7fe3a91e3f9f23edd5842c361d469d88b06e"
+  integrity sha512-jcaFrsnXnzn0E2cMjIquxso6/1fQdide6R8BXCx3sGwsbXbsB/i1cKrWX7ug+koLJD6luC8eX/9+pVHdqQkrUw==
 
 "@hapi/address@2.x.x":
   version "2.1.2"

@@ -26,8 +26,9 @@
     "example": "yarn dev"
   },
   "dependencies": {
-    "@fabulas/astly": "*",
-    "@fabulas/themes": "*",
+    "@fabulas/astly": "0.0.21-beta.0",
+    "@fabulas/themes": "0.0.5",
+    "@fabulas/tests": "*",
     "@zeit/next-sass": "^1.0.1",
     "node-sass": "^4.13.0",
     "next": "^9.1.1",

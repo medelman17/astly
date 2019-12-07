@@ -1,4 +1,4 @@
-export default `
+module.exports = `
 <style>
 .red {
   background-color: red;
@@ -18,7 +18,7 @@ export default `
   .red {
     background-color: blue
   }
- }
+}
 </style>
 <script>
 
@@ -27,7 +27,7 @@ console.log('nothing should happen on native')
 
 
 </script>
-<div class="red" style="background-color: red;">
+<div class="red">
     <h1>
       HTML, CSS, & React Native
     </h1>

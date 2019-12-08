@@ -1,3 +1,4 @@
 import RenderHtml from './RenderHtml';
 import RenderTree from './RenderTree';
-export {RenderHtml, RenderTree};
+import RenderMarkdown from './RenderMarkdown';
+export {RenderHtml, RenderTree, RenderMarkdown};

@@ -42,7 +42,6 @@ const web = {
     new Dotenv({
       path: path.resolve(__dirname, `../../.web.env`),
     }),
-    new BundleAnalyzerPlugin(),
   ],
   output: {
     path: path.resolve(__dirname, '../../dist/'),

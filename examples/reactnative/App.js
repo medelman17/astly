@@ -11,6 +11,7 @@ import {
   Text,
   RenderHtml,
   RenderTree,
+  RenderMarkdown,
   Box,
   Flex,
   ComponentMap,
@@ -18,6 +19,7 @@ import {
 import {one, two} from '@fabulas/themes';
 
 import testHtml from '@fabulas/tests';
+import testMarkdown from './testmarkdown';
 
 const tools = {
   onClick(node) {
@@ -27,6 +29,16 @@ const tools = {
     alert(JSON.stringify(node, null, 2));
   },
 };
+
+function cleanChildren(children) {
+  if (children && children.props && children.props.children) {
+    children.props.children.map(child => cleanChildren(child));
+  }
+  if (React.isValidElement(children)) {
+    return children;
+  }
+  return null;
+}
 
 const App = () => {
   const [currentTheme, toggleTheme] = React.useState(false);
@@ -45,7 +57,8 @@ const App = () => {
             <Flex
               border={2}
               bg={thisTheme.colors.primary}
-              py="1"
+              py="3"
+              my="2"
               alignItems="center"
               justifyContet="center">
               <Text
@@ -56,30 +69,18 @@ const App = () => {
                 Toggle Theme
               </Text>
             </Flex>
-            <Flex
-              border={2}
-              bg={thisTheme.colors.primary}
-              py="1"
-              alignItems="center"
-              justifyContet="center">
-              <Text
-                color="white"
-                onPress={() => {
-                  toggleHTML(!currentHTML);
-                }}>
-                Toggle HTML
-              </Text>
-            </Flex>
+
+            <RenderMarkdown markdown={testMarkdown} theme={thisTheme} />
             {
-              <RenderHtml
-                html={thisHtml}
-                theme={thisTheme}
-                tools={tools}
-                componentMap={{
-                  ...ComponentMap,
-                  div2: Box,
-                }}
-              />
+              // <RenderHtml
+              //   html={thisHtml}
+              //   theme={thisTheme}
+              //   tools={tools}
+              //   componentMap={{
+              //     ...ComponentMap,
+              //     div2: Box,
+              //   }}
+              // />
             }
           </View>
         </ScrollView>

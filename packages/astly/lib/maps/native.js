@@ -42,4 +42,9 @@ export default {
   img: Media,
   script: Script,
   style: () => null,
+  // heading: withProps(Text, {}),
+  root: Box,
+  // text: Text,
+  // paragraph: Text,
+  section: Box,
 };

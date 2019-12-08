@@ -21,10 +21,12 @@ import testHtml from '@fabulas/tests';
 
 const tools = {
   onClick(node) {
-    alert(JSON.stringify(node, null, 2));
+    const {type, tagName, properties} = node;
+    alert(JSON.stringify({type, tagName}, null, 2));
   },
   navigate(node) {
-    alert(JSON.stringify(node, null, 2));
+    const {type, tagName, properties} = node;
+    alert(JSON.stringify({type, tagName}, null, 2));
   },
 };
 
@@ -67,7 +69,7 @@ const App = () => {
                 onPress={() => {
                   toggleHTML(!currentHTML);
                 }}>
-                Toggle HTML
+                Toggle HTML {currentHTML === true ? 'true' : 'false'}
               </Text>
             </Flex>
             {

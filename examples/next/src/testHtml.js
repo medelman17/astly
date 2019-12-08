@@ -1,5 +1,6 @@
 export default `
 <style>
+$color: red;
 .red {
   background-color: red;
 }

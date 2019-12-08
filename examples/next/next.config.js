@@ -10,6 +10,8 @@ module.exports = withSass({
     config.resolve.alias = {
       ...config.resolve.alias,
       react: path.resolve('../../node_modules/react'),
+      'react-dom': path.resolve('../../node_modules/react-dom'),
+
       // '@zeit/next-sass': path.resolve('../../node_modules/@zeit/next-sass'),
     };
     return config;

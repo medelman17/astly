@@ -88,7 +88,7 @@ const client = {
   },
   target: 'node',
   output: {
-    path: path.resolve(__dirname, '../../dist/'),
+    path: path.resolve(__dirname, 'dist/'),
     publicPath: '',
     filename: 'build.js',
     libraryTarget: 'commonjs2',

@@ -2,6 +2,8 @@
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
+**Astly--an early stage, 'alpha' library--should not be used in production or elsewhere without reckless abandon; APIs are very much subject to change--everything is still be felt out, there is zero testing in place. That said, we think it's pretty neat.**
+
 ## Introduction
 
 Astly translates markup language--e.g., html, css, and markdown--into `react` components that render appropriately and predictably across host environments--e.g., web and native. To accomplish the former, Astly relies on the `UnifiedJS` ecosystem to process text into syntax trees, run various transformations thereon, and, finally, compile said trees into react components. To accomplish the latter, Astly leverages a set of `styled-components`-based visual primitives that are 'host-environment-aware' and inject appropriate dependencies at runtime.
@@ -153,6 +155,6 @@ The following CSS will work as one would expect were it to be included in an ext
 <div class="red center">Hello</div>
 ```
 
-Astly uses `postcss` under the hood to parse CSS. On web, where support for classes is provided by default, Astly leaves it to the browser to apply relevant rules. Thus, authors should be aware that class-naming conflict may arise. On native, where support is not provided, Astly scopes the provided rules to the components it renders.
+Astly uses `postcss` under the hood to parse CSS. On web, where support for classes is provided by default, Astly leaves it to the browser to apply relevant rules. Thus, authors should be aware that class-naming conflict may arise. On native, where support is not provided, Astly scopes the provided rules and declaration to the components it renders.
 
 ### Markdown

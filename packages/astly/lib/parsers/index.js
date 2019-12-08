@@ -1,1 +1,2 @@
-export * from "./parseHtml";
+export * from './parseHtml';
+export * from './parseMarkdown';

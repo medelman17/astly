@@ -5,7 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const native = {
   mode: 'production',
-  devtool: 'none',
+  devtool: 'eval',
   entry: './lib/index.js',
   optimization: {
     usedExports: true,

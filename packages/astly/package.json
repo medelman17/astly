@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.21-beta.5",
+  "version": "0.0.21-beta.6",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -62,6 +62,7 @@
     "hastscript": "^5.1.0",
     "html-whitespace-sensitive-tag-names": "^1.0.1",
     "jest": "^24.9.0",
+    "mdast-squeeze-paragraphs": "^3.0.5",
     "pluralize": "^8.0.0",
     "polished": "^3.4.2",
     "postcss": "^7.0.23",
@@ -75,6 +76,13 @@
     "rehype-parse": "^6.0.1",
     "rehype-preset-minify": "^4.0.0",
     "rehype-react": "^4.0.1",
+    "remark-html": "^10.0.0",
+    "remark-macro": "^1.0.7",
+    "remark-parse": "^7.0.2",
+    "remark-react": "^6.0.0",
+    "remark-rehype": "^5.0.0",
+    "remark-sectionize": "^1.1.0",
+    "remark-squeeze-paragraphs": "^3.0.4",
     "sass-loader": "^8.0.0",
     "scss-loader": "^0.0.1",
     "style-loader": "^1.0.0",
@@ -82,7 +90,9 @@
     "styled-system": "^5.1.2",
     "typography": "^0.16.19",
     "unified": "^8.4.1",
+    "unist-util-remove": "^1.0.3",
     "unist-util-visit": "^2.0.0",
+    "unist-util-visit-parents": "^3.0.1",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-node-externals": "^1.7.2"
   },

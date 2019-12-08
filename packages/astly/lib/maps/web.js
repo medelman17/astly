@@ -41,4 +41,6 @@ export default {
   a: withProps(Text, {}),
   img: Media,
   script: Script,
+  root: Box,
+  section: Box,
 };

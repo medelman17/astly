@@ -1,11 +1,11 @@
 'use strict';
-import visit from 'unist-util-visit';
-import {cssToStyleSheet} from './cssToStylesheet';
+// import visit from 'unist-util-visit';
+import {cssToStyleSheet, processCSSVariables} from './cssToStylesheet';
 import {getStylesForComponents} from './getStylesForComponent';
-import {cleanInlineStyles} from './cleanInlineStyles';
-import {isNative} from '../../helpers';
+// import {cleanInlineStyles} from './cleanInlineStyles';
+// import {isNative} from '../../helpers';
 
-const handlers = [cssToStyleSheet, getStylesForComponents];
+const handlers = [processCSSVariables, cssToStyleSheet, getStylesForComponents];
 
 function handleStyleTags(props) {
   return {

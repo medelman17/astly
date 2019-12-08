@@ -1,7 +1,11 @@
 module.exports = `
 <style>
+
+$mike: red; 
+$luciano: blue;
+
 .red {
-  background-color: red;
+  background-color: $mike;
 }
 .center {
   display: flex; 
@@ -14,41 +18,30 @@ module.exports = `
 .white {
   color: white; 
 }
-@media (min-width: 400px) { 
+@media screen and (min-device-width: 300px) { 
   .red {
-    background-color: blue
+    background-color: $luciano
   }
 }
 </style>
 <script>
-
-console.log('nothing should happen on native')
-
-
-
+console.log('nothing happens on native, but this would fire globally on web')
 </script>
-<div class="red">
+<div>
     <h1>
       HTML, CSS, & React Native
     </h1>
+    <h2>This is just HTML</h2>
     <div>
-    <h2>Buttons are fun</h2>
-    <button><span color="white">Primary Button<span></button>
-    <button variant="secondary"><span>Secondary Button<span></button>
-    <button variant="tertiary"><span color="white">Tertiary Button<span></button>
-    <button variant="cautionary"><span >Cautionary Button<span></button>
-    </div>
-    
-    <div>
-    <h2>Enjoy this picture of Chicago</h2>
-    <img src="https://www.gannett-cdn.com/presto/2018/10/03/USAT/52c93270-3c36-4539-9bdd-35ba7a5112d5-GettyImages-874734912.jpg" />
-    </div>
     <h2>
       Using this css... 
     </h2>
-    <p>
+    <p class="monospace">
+    $mike: red;
+    </p>
+    <p class="monospace">
     .red {
-      background-color: red;
+      background-color: $mike;
     }
     </p>
     <h2>
@@ -75,7 +68,5 @@ console.log('nothing should happen on native')
       JavaScript / JSX required to make this screen? Zero.
     </h2>
     <a href="http://fabulas.io">Link Test</a>
-    
-    
   </div>
 `;

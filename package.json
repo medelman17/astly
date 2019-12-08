@@ -6,6 +6,8 @@
       "examples/*"
     ],
     "nohoist": [
+      "**/react",
+      "**/react/**",
       "**/react-native",
       "**/react-native/**",
       "**/@babel/runtime",

@@ -27,7 +27,7 @@ console.log('nothing should happen on native')
 
 
 </script>
-<div class="red" style="background-color: red;">
+<div>
     <h1>
       HTML, CSS, & React Native
     </h1>

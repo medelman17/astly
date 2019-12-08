@@ -4,29 +4,47 @@ import visit from 'unist-util-visit';
 import postcss from 'postcss';
 import transform from 'css-to-react-native';
 import {isNative} from '../../helpers';
+import variables from 'postcss-simple-vars';
 
-export {cssToStyleSheet};
+export {cssToStyleSheet, processCSSVariables};
+
+function processCSSVariables(props) {
+  return function transformer(tree, file, next) {
+    file.data.styles = {};
+    let promises = [];
+    visit(tree, {type: 'element', tagName: 'style'}, function(node) {
+      const {tagName} = node;
+      let promise = postcss([variables])
+        .process(node.children[0].value)
+        .then(res => {
+          const root = postcss.parse(res.css);
+          if (isNative) {
+            const map = handleCssParsing(root);
+            for (let key in map) {
+              const conformedKey = conformKey(key);
+              file.data.styles[conformedKey] = transform(map[key]);
+            }
+          } else {
+            node.children[0].value = res.css;
+          }
+        });
+      promises.push(promise);
+    });
+    Promise.all(promises).then(() => next(null, tree, file));
+  };
+}
 
 function cssToStyleSheet(props) {
   return transformer;
 
   function transformer(tree, file) {
-    file.data.styles = {};
     visit(tree, 'element', visitor);
     function visitor(node, index, parent) {
       const {
         tagName,
         properties: {style},
       } = node;
-      if (isNative && tagName === 'style') {
-        const rawCss = node.children[0].value;
-        const root = postcss.parse(rawCss);
-        const map = handleCssParsing(root);
-        for (let key in map) {
-          const conformedKey = conformKey(key);
-          file.data.styles[conformedKey] = transform(map[key]);
-        }
-      }
+
       if (isNative && node.properties.style !== undefined) {
         const root = postcss.parse(style);
         const map = handleCssParsing(root);
@@ -52,7 +70,12 @@ function handleCssParsing(root) {
     }
     // console.log(JSON.stringify(node, null, 2));
     if (node.type === 'decl') {
-      if (node.parent.parent.type === 'atrule') {
+      if (
+        isNative &&
+        node.parent &&
+        node.parent.parent &&
+        node.parent.parent.type === 'atrule'
+      ) {
         return;
       }
       const key = getStyleKey(node);

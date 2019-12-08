@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.21-beta.6",
+  "version": "0.0.21-beta.7",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

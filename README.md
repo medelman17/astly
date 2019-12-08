@@ -2,174 +2,157 @@
 
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
 
-Astly is a VERY EARLY STAGE javascript library for rendering static content (e.g., html) into react components that work on web and native. It's also a primitive UI library that could be used to build custom, platform-agnostic components. Powered by the [`Unified`](https://github.com/unifiedjs/unified) ecosystem, [`Styled Components`](https://github.com/styled-components/styled-components), [`Styled System`](https://github.com/styled-system/styled-system), and [`React`](https://github.com/facebook/react).
+## Introduction
 
-You write something like:
+Astly translates markup language--e.g., html, css, and markdown--into `react` components that render appropriately and predictably across host environments--e.g., web and native. To accomplish the former, Astly relies on the `UnifiedJS` ecosystem to process text into syntax trees, run various transformations thereon, and, finally, compile said trees into react components. To accomplish the latter, Astly leverages a set of `styled-components`-based visual primitives that are 'host-environment-aware' and inject appropriate dependencies at runtime.
 
+Astly's `<RenderHtml />` & `<RenderMarkdown />` components tie the above two steps together in one line of code, making Astly an end-to-end, 'no/low-code' solution for non-development-focused content creators--without any need to employ solutions like `WebViews`. For example, the following implementation is sufficient to render an entire screen/page 'in `react`' (_i.e._, Astly writes react for you) and can be written once and shared across platforms:
+
+```jsx
+import React from 'react';
+import {RenderHtml} from '@fabulas/astly';
+
+function RenderContent() {
+   const [content, setContent] React.useState(null);
+   React.useEffect(() => {
+       async function getContent() {
+           const html = await fetch(`https://somebackend.content`).then(res => res.text())
+           setContent(html)
+       }
+       getContent()
+   }, [])
+   return <RenderHtml html={content} />
+}
 ```
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import tree from './htmlForest'
 
-function App() {
-    return <RenderTree tree={tree} />
+The rest of the magic happens under the hood. At the same time, Astly exposes various APIs to override its sensible defaults and/or hook into its process, providing flexibility and extensibility by allowing teams to opt-in to complexity as the need arises. Further, Astly exposes all of its UI primitives, any/all of which can be used outside of Astly's flagship components to write custom, host-agnostic code that can be immediately shared between teams, empowering developers to 'write-once, render anywhere,' too.
+
+For example, consider a somewhat simplified representation of Astly's `Box` component:
+
+```jsx
+function Box(props) {
+  return <StyledBox {...props} />;
 }
 
-// where tree is soemthing like:
-
-const testTree = `<div class="App" ><header minHeight="100vh" style="display: flex; justify-content: center; align-items: center; flex-direction: column;" bg="#282c34" minHeight="100vh" class="App-header"><img height="40vmin" src=${logo} source=${logo} class="App-logo" alt="logo"/><p color="white">Edit src/App.js and save to reload.</p><div><a class="App-link" href="https://fabulas.io" color="white"><p>Fabulas Link</p></a></div></headerclass="App-header"></div>`;
-
+const StyledBox = styled[isNative ? 'View' : 'div']``;
 ```
 
-You get something like:
+The above is sufficient to allow both Astly and developers leveraging its UI primitives to write code without regard to where such code will be executed. To achieve UI consistency and predictably across host-environments, Astly implements styled-system's constraint-based style props. For example, consider Astly's `<Text />` component:
 
-| Web                    | Native                    |
-| :--------------------- | :------------------------ |
-| ![web view][webresult] | ![web view][nativeresult] |
-|                        |                           |
+```jsx
+import React from react;
+import {space, color, typography, variant, compose } from 'styled-system';
+import styled from 'styled-components';
 
-Give it try [here](https://codesandbox.io/s/astly-demo-p6l39)
+const styles = compose(color, typograhpy, space);
+
+function Text(props) {
+    return <StyledText {...props} />
+}
+
+const StyledText = styled[isNative ? 'Text' : 'span']`
+    ${variant({
+        // various variants described below...
+    })}
+    ${styles}
+`;
+
+export default Text;
+```
+
+As a result of the above, Astly is able to provide a multi-leveled, yet consistent and predictable api for styling, making Astly primitives a strong foundation for a host-environment agnostic design-system. Further, Astly implements a System UI Theme Specification-compliant theme-ing paradigm. And, as a part thereof, Astly primitives heavily rely on `Styled-System`'s variants api to make working with it as easily as possible for developers of all stripes.
+
+All of Astly's `RenderWhatever` components accept a `theme` prop, which Astly will merge with and or override its default style-related choices/implementations. For example, if left alone, Astly will use `typographyjs` and `react-native-typography` to set system-appropriate/user-expected fonts, line-heights, weights, sizes, etc. Further, to provide locked-in vertical rhythm out of the box, Astly will apply styling variants based on the `tagName` (html) or `type` (markdown) of the element it encounters. Opt-ing out of a given choice is as simple as supplying a plain old javascript object to Astly's render components. Thus, where one were to want to change the default styling for level-one headings (i.e., `h1` in html; `heading`, depth 1 in markdown), one need only include a set of styles to apply instead at `theme.text.h1`.
 
 ## Installation
 
-Use `npm` or `yarn` to install astly.
+Use `npm` or `yarn` to install Astly and its peer dependencies. For example:
 
-`npm install @fabulas/astly --save`
+`yarn add @fabulas/astly @fabulas/themes styled-components react react-dom`
 
-or
+## Astly: The Markup to React Parts
 
-`yarn add @fabulas/astly`
+Astly is currently able to work with various parts of Html, CSS, and Markdown--support for each is growing daily.
 
-## Astly: The Syntax-Tree Bits
+### HTML
 
-Right now, Astly provides limited parsing support for html out of the box. It works like this:
+Astly currently supports the below list of HTML tags.
 
-(1) you give Astly's `RenderTree` component an html string that is both (a) minified (no extra whitespace) and (b) contains no implicit paragraphs; and
+| Layout                                                                  | Text/Other                                                                      |
+| :---------------------------------------------------------------------- | :------------------------------------------------------------------------------ |
+| div, head, body, html, row, col, table, thead, tbody, tr, td, th, style | p, span, h1, h2, h3, h4, h5, em, u, sup, sub, strong, b, strike, img, a, button |
+|                                                                         |                                                                                 |
 
-> _Immediate_ support planned for the above two issues. But, for now, them's the facts.
+#### Component Map
 
-(2) Astly'll will parse that html into a `syntax-tree` turn it into react that is render-appropriate for the web and native.
-
-It might look something like this:
+Support can be extended or over-ridden via the `componentMap` prop available on both `RenderHtml` and `RenderMarkdown`. For example, consider the following examples:
 
 ```jsx
-import React from "react";
-import { RenderTree } from "@fabulas/astly";
+import React from 'react';
+import {RenderHtml, ComponentMap} from '@fabulas/astly';
+import CustomComponentForCustomTag from '../components';
 
-function App() {
-  const [tree, setTree] = React.useState(null);
-  React.useEffect(() => {
-    async function getTree() {
-      const newTree = await fetch("/giveMeTree").then(tree => tree.json());
-      setTree(newTree);
-    }
-    getTree();
-  }, []);
-  return <RenderTree tree={tree} />;
-}
-
-export default App;
-```
-
-We're not quite there yet.
-
-> Indeed, ideally, this would only be the beginning. The [Unified](https://github.com/unifiedjs/unified) ecosystem provides an interface for processing text using syntax trees that just so happens to [play very nicely](https://itnext.io/parse-react-components-with-babel-and-visualize-them-45062046cb72) with react. This is what we use to get the job done. So, sky's really the limit.
-
-### RenderTree
-
-```
-import { RenderTree } from '@fabulas/astly`
-
-const tree = `<div><p>Hello World</p></div>`
-
-function App() {
-    return <RenderTree tree={tree} />
-}
-
-export default App;
-```
-
-Astly also exposes complete control over the tree transformation process, allowing you to override each and every one of its default choices if you would like. 😞 And it lets you inspect and or transform the results (react elements) before they are rendered.
-
-See below for examples; prop tables coming soon.
-
-## Astly: The UI Primitives Bits
-
-Astly also exposes the react primitives that it uses under the hood, which should allow you to write custom, platform-agnostic components as far as you can compose them.
-
-### Composable
-
-Under the hood Astly uses [`styled-components`](https://www.styled-components.com/), [`styled-system`](https://styled-system.com/), and [`styled-components-modifiers`](https://github.com/Decisiv/styled-components-modifiers) to create a base of platform agnostic primitives that are theme-ready, backwards compatible, and highly composable.
-
-For example:
-
-```
-import { Box, Text, styled } from '@fabulas/astly`;
-
-const MyOrangeRedBox = styled(Box)`
-    background-color: orangered;
-`
-
-export default function Tile(props) {
-    return <MyOrangeRedBox><Text>Hello!</Text></MyOrangeRedBox>
+function MyComponent({html}) {
+    return <RenderHtml html={html} componentMap={{
+        ...ComponentMap,
+        div: (props) => <MyAwesomeBox {...props}>,
+        customtag: CustomComponentForCustomTag
+    }}>
 }
 ```
 
-### Flexible
+Note: Attributes included on HTML elements that Astly parses will be supplied as `props` to the react components that Astly generates. As such, given that Astly uses the same UI primitives described above, HTML content authors may leverage all the power of styled-components and or styled-system's theme/styling-props. For example, the following are equivalent:
 
-Astly implements `styled-system`, which provides a set of well-engineered, unified style props 'for rapid UI development' that work for both humans and machines. There are too many potential options to cover here; however, suffice it to say, where there is a will there is a way with styled-system. You can find a reference table [here](https://styled-system.com/table).
-
-Some 'canonical' examples might include:
-
+```html
+<div bg="red">
+  <p variant="body" color="white">Hello</p>
+</div>
 ```
 
-<Text as="h1" color="white" bg="black" fontFamily="system-ui">
-  This is a header!
-</Text>
-
-<Box width="100%" px={4} py={2}>
-  <Text>
-    React Native Don't Like it When You Render Text Outside a Text Component
+```jsx
+<Box bg="red">
+  <Text variant="body" color="white">
+    Hello
   </Text>
-</Box>;
-
+</Box>
 ```
 
-Astly also provides limited support for `modifiers` (e.g., `strike`,`underline`, etc.); so, the following would work too.
+#### Style
 
+On web, CSS provided to Astly (in the form of `<Style />` tags) is applied globally. As such, where markup is being served to Astly dynamically--i.e., via network request--and Astly lives alongside other content, authors are able to override existing classes, styles, etc., should the need arise. Astly's support for CSS in Style tags is more robust than that typically provided by the browser--see below re: how Astly leverages `postcss` to provide support for things like CSS variables, etc.
+
+#### Script
+
+On web, JavaScript provided to Astly (in the form of `<Script />` tags) will be executed globally--i.e., outside the scope of Astly's `RenderHtml` component--with full access to DOM APIs, providing a robust api for authors to inject third-party scripts and or perform wide-ranging DOM manipulation. In non-web environments, script tags are presently ignored.
+
+### CSS
+
+The following CSS will work as one would expect were it to be included in an external file and post-processed:
+
+```html
+<style>
+  $astly: red;
+  $rocks: blue;
+
+  .red {
+    background-color: $astly;
+  }
+
+  @media only screen and (min-device-width: 500px) {
+    .red {
+      background-color: $rocks;
+    }
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<div class="red center">Hello</div>
 ```
-<Text as="h1" modifiers=['strike', 'bold'] color="white" bg="black">This is a header!</Text>
-```
 
-> Because styled-system works with just about any CSS-in-JS library out of the box, we should be able decouple `styled-components` and or provide support for alternate dependency injection in the future.
+Astly uses `postcss` under the hood to parse CSS. On web, where support for classes is provided by default, Astly leaves it to the browser to apply relevant rules. Thus, authors should be aware that class-naming conflict may arise. On native, where support is not provided, Astly scopes the provided rules to the components it renders.
 
-### Customizable
-
-While Astly exposes a set of primitive components that should work for most applications, you are free to provide your own overrides by utilizing the `componentMap` prop on `RenderTree`, which takes an object that links tree-generated tags with the components that should be used for that datatype.
-
-For example:
-
-```
-<RenderTree
-    tree={tree}
-    componentMap={{
-        img: BetterImageComponent,
-        'whatever': (props) => <GreatComponent {...props} />
-    }}
-/>
-```
-
-Astly also expose another, soon-to-be-renamed prop on `RenderTree` called `inspectNewChildren`...that allows for last-minute transformation and or manipulation of what `RenderTree` wants to render. You could think of it as a render-prop. See [here](https://reactjs.org/docs/react-api.html) for likely use cases.
-
-## Roadmap
-
-- **Decouple parsing bits from rendering bits.** `RenderTree` should not be concerned with parsing. Ideally, this would be taken care of somewhere outside of the browser/device--i.e., on the backend. But, for present purposes and to ease eventual migration, we should continue to support parsing in the browser via `MakeTree` or something.
-- **More Coming Soon...**
-
-<!-- Definitions -->
-
-[webcode]: https://i.ibb.co/2q8Y33j/web.png
-[webresult]: https://i.ibb.co/8XTYXPx/Screen-Shot-2019-09-18-at-2-38-43-PM.png
-[nativecode]: https://i.ibb.co/8bNk8Bt/native.png
-[nativeresult]: https://i.ibb.co/cCXBxYY/Simulator-Screen-Shot-i-Phone-X-2019-09-18-at-15-29-25.png
+### Markdown

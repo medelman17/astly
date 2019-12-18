@@ -19,7 +19,11 @@
       "**/styled-components",
       "**/styled-components/**",
       "**/react-is",
-      "**/react-is/**"
+      "**/react-is/**",
+      "**/apollo-link-prismic",
+      "**/apollo-link-prismic/**",
+      "**/prismic-dom",
+      "**/prismic-dom/**"
     ]
   },
   "scripts": {

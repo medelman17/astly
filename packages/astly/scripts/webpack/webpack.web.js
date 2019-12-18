@@ -37,7 +37,22 @@ const web = {
       },
     ],
   },
-  externals: [nodeExternals()],
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+    },
+    'react-native': 'react-native',
+    'styled-components': 'styled-components',
+  },
   plugins: [
     new Dotenv({
       path: path.resolve(__dirname, `../../.web.env`),

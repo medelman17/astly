@@ -1,6 +1,6 @@
 {
   "name": "@fabulas/astly",
-  "version": "0.0.21-beta.7",
+  "version": "0.0.21",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -13,7 +13,7 @@
     "render"
   ],
   "author": "Michael Jopseph Edelman <michael@fabulas.io>",
-  "license": "GNU AGPLv3",
+  "license": "MIT",
   "main": "dist/index.js",
   "react-native": "dist/index.native.js",
   "directories": {

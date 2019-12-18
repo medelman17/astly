@@ -1,53 +1,15 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {
-  Text,
-  RenderHtml,
-  RenderTree,
-  RenderMarkdown,
-  Box,
-  Flex,
-  ComponentMap,
-} from '@fabulas/astly';
+import {Box} from '@fabulas/astly';
 import {one, two} from '@fabulas/themes';
-
-import testHtml from '@fabulas/tests';
-import testMarkdown from './testmarkdown';
-
-const tools = {
-  onClick(node) {
-    const {type, tagName, properties} = node;
-    alert(JSON.stringify({type, tagName}, null, 2));
-  },
-  navigate(node) {
-    const {type, tagName, properties} = node;
-    alert(JSON.stringify({type, tagName}, null, 2));
-  },
-};
-
-function cleanChildren(children) {
-  if (children && children.props && children.props.children) {
-    children.props.children.map(child => cleanChildren(child));
-  }
-  if (React.isValidElement(children)) {
-    return children;
-  }
-  return null;
-}
+import Button from './src/button';
+import {Provider} from './src/apollo';
+import Renderer from './src/renderer';
 
 const App = () => {
-  const [currentTheme, toggleTheme] = React.useState(false);
-  const [currentHTML, toggleHTML] = React.useState(true);
-  const thisTheme = currentTheme === true ? one : two;
-  const thisHtml = currentHTML === true ? `<div></div>` : testHtml;
-
+  const [themeToggler, toggleTheme] = React.useState(false);
+  const currentTheme = themeToggler ? one : two;
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -55,45 +17,29 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <View style={styles.body}>
-            <Flex
-              border={2}
-              bg={thisTheme.colors.primary}
-              py="3"
-              my="2"
-              alignItems="center"
-              justifyContet="center">
-              <Text
-                color="white"
-                onPress={() => {
-                  toggleTheme(!currentTheme);
-                }}>
-                Toggle Theme
-              </Text>
-            </Flex>
-
-            <RenderMarkdown markdown={testMarkdown} theme={thisTheme} />
-            {
-              // <RenderHtml
-              //   html={thisHtml}
-              //   theme={thisTheme}
-              //   tools={tools}
-              //   componentMap={{
-              //     ...ComponentMap,
-              //     div2: Box,
-              //   }}
-              // />
-            }
-          </View>
+          <Box style={styles.body}>
+            <Button
+              onPress={() => toggleTheme(!themeToggler)}
+              theme={currentTheme}>
+              Toggle Theme
+            </Button>
+            {<Renderer theme={currentTheme} />}
+          </Box>
         </ScrollView>
       </SafeAreaView>
     </>
   );
 };
 
+export default () => (
+  <Provider>
+    <App />
+  </Provider>
+);
+
 const styles = StyleSheet.create({
   scrollView: {
-    backgroundColor: Colors.lighter,
+    backgroundColor: 'white',
   },
   engine: {
     position: 'absolute',
@@ -130,5 +76,3 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
-export default App;

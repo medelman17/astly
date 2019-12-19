@@ -1,65 +1,23 @@
 {
+  "name": "astly",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:fabulascode/astly.git",
+  "author": "Michael Edelman <michael@fabulas.io>",
+  "license": "MIT",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "examples/*"
-    ],
-    "nohoist": [
-      "**/react",
-      "**/react/**",
-      "**/react-native",
-      "**/react-native/**",
-      "**/@babel/runtime",
-      "**/@babel/runtime/**",
-      "**/playroom",
-      "**/playroom/**",
-      "**/css-to-react-native",
-      "**/css-to-react-native/**",
-      "**/styled-components",
-      "**/styled-components/**",
-      "**/react-is",
-      "**/react-is/**",
-      "**/apollo-link-prismic",
-      "**/apollo-link-prismic/**",
-      "**/prismic-dom",
-      "**/prismic-dom/**"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "prettier": "prettier \"packages/**/{src,test,examples}/**/*.js\" --write",
-    "build": "lerna run --ignore 'next' build ",
-    "dev": "lerna run dev",
     "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish",
-    "clean": "lerna clean",
-    "test": "lerna run --ignore 'next' test "
+    "clean": "lerna run clean",
+    "build": "lerna run build",
+    "pub": "lerna publish"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "@babel/preset-react": "^7.7.4",
-    "@babel/runtime": "^7.7.4",
-    "@react-native-community/eslint-config": "^0.0.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-macros": "^2.6.1",
-    "css-to-react-native": "^3.0.0",
-    "html-whitespace-sensitive-tag-names": "^1.0.1",
-    "rehype-preset-minify": "^4.0.0",
-    "husky": "^3.1.0",
-    "lerna": "3.17.0",
-    "lint-staged": "^9.5.0",
-    "metro-react-native-babel-preset": "^0.51.1",
-    "node-sass": "^4.13.0",
+    "lerna": "^3.19.0",
     "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-is": "^16.12.0",
-    "react-native": "^0.61.2",
-    "terser-webpack-plugin": "^2.2.1",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-node-externals": "^1.7.2"
+    "typescript": "^3.7.3"
   }
 }

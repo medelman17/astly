@@ -1,5 +1,5 @@
 {
-  "name": "@astly/themes",
+  "name": "@astly/parsers",
   "version": "0.0.1",
   "main": "dist/index",
   "types": "dist/index",

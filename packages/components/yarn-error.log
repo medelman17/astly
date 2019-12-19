@@ -1,0 +1,64 @@
+Arguments: 
+  /Users/edelman215/.nvm/versions/node/v12.11.1/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js build
+
+PATH: 
+  /Users/edelman215/.nvm/versions/node/v12.11.1/bin:/usr/local/opt/bison/bin:/Users/edelman215/.rbenv/shims:/Users/edelman215/.nvm/versions/node/v12.11.1/bin:/Users/edelman215/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/bison/bin:/Users/edelman215/.rbenv/shims:/Users/edelman215/.nvm/versions/node/v12.11.1/bin:/Users/edelman215/.cargo/bin:/Users/edelman215/Code/Go/bin:/Users/edelman215/Library/Android/sdk/emulator:/Users/edelman215/Library/Android/sdk/tools:/Users/edelman215/Library/Android/sdk/tools/bin:/Users/edelman215/Library/Android/sdk/platform-tools:/Users/edelman215/Code/Go/bin:/Users/edelman215/Library/Android/sdk/emulator:/Users/edelman215/Library/Android/sdk/tools:/Users/edelman215/Library/Android/sdk/tools/bin:/Users/edelman215/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.11.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/edelman215/Projects/Fabulas/astly/packages/components/package.json: Unexpected string in JSON at position 269
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.19.1/libexec/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "@astly/components",
+    "version": "0.0.1",
+    "main": "build/index.js",
+    "module": "build/index.es.js",
+    "jsnext:main": "build/index.es.js",
+    "types": "dist/index",
+    "files": [
+      "build"
+    ],
+    "scripts": {
+      "build": "rollup -c",
+      "build:native" "IS_NATIVE=true rollup -c"
+      "clean": "rm -rf ./dist",
+      "compile": "tsc -p tsconfig.build.json",
+      "prepublishOnly": "npm run build",
+      "start": "tsc -w"
+    },
+    "author": "Michael Edelman",
+    "license": "MIT",
+    "peerDependencies": {
+      "react": "^16.12.0",
+      "react-dom": "^16.12.0",
+      "styled-components": "^5.0.0-rc.2"
+    },
+    "devDependencies": {
+      "@rollup/plugin-alias": "^2.2.0",
+      "@rollup/plugin-replace": "^2.2.1",
+      "react-native": "^0.61.5",
+      "react-native-web": "^0.11.7",
+      "rollup-plugin-uglify": "^6.0.4",
+      "typescript": "^3.7.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

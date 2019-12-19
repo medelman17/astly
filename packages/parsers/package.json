@@ -1,16 +1,22 @@
 {
   "name": "@astly/parsers",
   "version": "0.0.1",
-  "main": "dist/index",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "react-native": "build/index.native.js",
+  "jsnext:main": "build/index.es.js",
   "types": "dist/index",
   "files": [
-    "dist"
+    "build"
   ],
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "yarn clean && concurrently yarn:build-*",
+    "build-web": "rollup -c",
+    "build-native": "IS_NATIVE=true rollup -c",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn build",
+    "start": "tsc -w"
   },
   "author": "Michael Edelman",
   "license": "MIT",

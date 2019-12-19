@@ -1,24 +1,43 @@
 {
   "name": "@astly/components",
   "version": "0.0.1",
-  "main": "dist/index",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "react-native": "build/index.native.js",
+  "jsnext:main": "build/index.es.js",
   "types": "dist/index",
   "files": [
-    "dist"
+    "build"
   ],
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "yarn clean && concurrently yarn:build-*",
+    "build-web": "rollup -c",
+    "build-native": "IS_NATIVE=true rollup -c",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "yarn build",
+    "start": "tsc -w",
+    "test": "jest --coverage"
   },
   "author": "Michael Edelman",
   "license": "MIT",
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
   "peerDependencies": {
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/styled-components": "^4.4.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-is": "^16.12.0",
+    "react-native": "^0.61.5",
+    "react-native-web": "^0.11.7",
+    "styled-components": "^5.0.0-rc.2",
     "typescript": "^3.7.3"
   }
 }

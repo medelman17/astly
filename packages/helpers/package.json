@@ -1,5 +1,5 @@
 {
-  "name": "@astly/themes",
+  "name": "@astly/helpers",
   "version": "0.0.1",
   "license": "GPLv3",
   "repository": "git@github.com:fabulascode/astly.git",
@@ -19,12 +19,12 @@
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn build",
-    "start": "tsc -w"
+    "start": "tsc -w",
+    "watch": "yarn clean && concurrently yarn:watch-*",
+    "watch-web": "rollup -c --watch",
+    "watch-native": "IS_NATIVE=true rollup -c --watch"
   },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
+  "peerDependencies": {},
   "devDependencies": {
     "typescript": "^3.7.3"
   }

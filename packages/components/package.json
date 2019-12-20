@@ -1,6 +1,9 @@
 {
   "name": "@astly/components",
   "version": "0.0.1",
+  "license": "GPLv3",
+  "repository": "git@github.com:fabulascode/astly.git",
+  "author": "Michael Edelman <michael@fabulas.io>",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "react-native": "build/index.native.js",
@@ -17,10 +20,11 @@
     "compile": "tsc -p tsconfig.build.json",
     "prepublishOnly": "yarn build",
     "start": "tsc -w",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "watch": "yarn clean && concurrently yarn:watch-*",
+    "watch-web": "rollup -c --watch",
+    "watch-native": "IS_NATIVE=true rollup -c --watch"
   },
-  "author": "Michael Edelman",
-  "license": "MIT",
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node"
@@ -31,13 +35,18 @@
     "styled-components": "^5.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/styled-components": "^4.4.1",
+    "@astly/helpers": "*",
+    "@astly/hooks": "*",
+    "@types/node": "^12.12.21",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-is": "^16.12.0",
     "react-native": "^0.61.5",
     "react-native-web": "^0.11.7",
+    "rollup-plugin-size-snapshot": "^0.10.0",
     "styled-components": "^5.0.0-rc.2",
+    "styled-components-modifiers": "^1.2.5",
+    "styled-system": "^5.1.4",
     "typescript": "^3.7.3"
   }
 }

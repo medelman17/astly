@@ -1,0 +1,16 @@
+{
+  "include": ["src"],
+  "exclude": ["node_modules", "./node_modules", "./node_modules/*"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "emitDeclarationOnly": true,
+    "declarationDir": "@types",
+    "sourceMap": true,
+    "noImplicitAny": true,
+
+    "target": "es6",
+    "jsx": "react",
+    "declaration": true,
+    "skipLibCheck": true
+  }
+}

@@ -1,20 +1,11 @@
-import {
-  color,
-  ColorProps,
-  space,
-  SpaceProps,
-  layout,
-  LayoutProps,
-  position,
-  PositionProps,
-  compose,
-  shadow,
-  ShadowProps,
-  background,
-  BackgroundProps,
-  border,
-  BorderProps,
-} from 'styled-system';
+import {layout, LayoutProps} from '@styled-system/layout';
+import {color, ColorProps} from '@styled-system/color';
+import {border, BorderProps} from '@styled-system/border';
+import {background, BackgroundProps} from '@styled-system/background';
+import {shadow, ShadowProps} from '@styled-system/shadow';
+import {position, PositionProps} from '@styled-system/position';
+import {space, SpaceProps} from '@styled-system/space';
+import {compose} from '@astly/helpers';
 
 export type BaseBoxProps = ColorProps &
   SpaceProps &
@@ -24,7 +15,7 @@ export type BaseBoxProps = ColorProps &
   BackgroundProps &
   BorderProps;
 
-const styles = compose(
+export const styles = compose(
   color,
   space,
   layout,
@@ -34,5 +25,3 @@ const styles = compose(
   background,
   border,
 );
-
-export default styles;

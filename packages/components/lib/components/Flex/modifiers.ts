@@ -51,6 +51,4 @@ const flexModifiersConfig = {
   wrap: props => `flex-wrap: wrap;`,
 };
 
-const flexModifiers = applyStyleModifiers(flexModifiersConfig);
-
-export default flexModifiers;
+export const flexModifiers = applyStyleModifiers(flexModifiersConfig);

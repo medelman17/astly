@@ -1,3 +1,2 @@
-const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args));
-
-export default callAll;
+export const callAll = (...fns) => (...args) =>
+  fns.forEach(fn => fn && fn(...args));

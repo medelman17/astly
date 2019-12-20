@@ -1,7 +1,6 @@
-import {flexbox, FlexboxProps, compose} from 'styled-system';
+import {flexbox, FlexboxProps} from '@styled-system/flexbox';
+import {compose} from '@astly/helpers';
 
 export type BaseFlexProps = FlexboxProps;
 
-const styles = compose(flexbox);
-
-export default styles;
+export const styles = compose(flexbox);

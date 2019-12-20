@@ -2,7 +2,7 @@ import {variant} from 'styled-system';
 
 export type FlexVariants = 'column' | 'row';
 
-const FlexVariants = variant({
+export const flexVariants = variant({
   variants: {
     row: {
       display: 'flex',
@@ -14,5 +14,3 @@ const FlexVariants = variant({
     },
   },
 });
-
-export default FlexVariants;

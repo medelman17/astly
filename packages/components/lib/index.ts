@@ -1,3 +1,3 @@
-export {default as Box, BoxProps} from './components/Box/Box';
-export {default as Text, TextProps} from './components/Text/Text';
-export {default as Flex, FlexProps} from './components/Flex/Flex';
+export {Box, BoxProps} from './components/Box/Box';
+export {Text, TextProps} from './components/Text/Text';
+export {Flex, FlexProps} from './components/Flex/Flex';

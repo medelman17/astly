@@ -15,7 +15,7 @@ export type AstlyTextProps = {
 
 export type TextProps = BaseTextProps & AstlyTextProps;
 
-function Text(props: TextProps) {
+export function Text(props: TextProps) {
   return <StyledText {...cleanTextProps(props)}>{props.children}</StyledText>;
 }
 
@@ -26,5 +26,3 @@ const StyledText: React.FunctionComponent<TextProps> = styled[
   ${modifiers};
   ${styles};
 `;
-
-export default Text;

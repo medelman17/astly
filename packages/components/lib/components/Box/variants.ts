@@ -1,12 +1,10 @@
-import {variant} from 'styled-system';
+import {variant} from '@styled-system/variant';
 
 export type BoxVariants = 'normal';
 
-const BoxVariants = variant({
+export const boxVariants = variant({
   scale: 'box',
   variants: {
     normal: {},
   },
 });
-
-export default BoxVariants;

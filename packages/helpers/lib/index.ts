@@ -1,16 +1,21 @@
 // env helpers
 
-export {default as isDomAvailable} from './env/isDomAvailable';
+export {isDomAvailable} from './env/isDomAvailable';
 
 // function helpers
 
-export {default as callAll} from './fns/callAll';
+export {callAll} from './fns/callAll';
 
 // astly helpers
 
-export {default as swapChildren} from './astly/swapChildren';
-export {default as findAndParseIncognitoNumbers} from './astly/findAndParseIncognitoNumbers';
+export {swapChildren} from './astly/swapChildren';
+export {findAndParseIncognitoNumbers} from './astly/findAndParseIncognitoNumbers';
 
 // regex helpers
 
-export {default as numberRe} from './re/numberRe';
+export {numberRe} from './re/numberRe';
+
+// style helpers
+
+export {compose} from './style/compose';
+export {getObjectFromArrays} from './style/getObjectFromArrarys';

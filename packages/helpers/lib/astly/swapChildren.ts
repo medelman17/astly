@@ -1,4 +1,4 @@
-function swapChildren(map) {
+export function swapChildren(map) {
   const keys = Object.keys(map);
   return function check(element) {
     if (element && element.props && element.props.children) {
@@ -24,5 +24,3 @@ function swapChildren(map) {
     return element;
   };
 }
-
-export default swapChildren;

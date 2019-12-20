@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import {isDomAvailable} from '@astly/helpers';
-import styles, {BaseBoxProps} from './styles';
-import variants, {BoxVariants} from './variants';
-import modifiers, {BoxModifiers} from './modifiers';
+import {styles, BaseBoxProps} from './styles';
+import {boxVariants as variants, BoxVariants} from './variants';
+import {boxModifiers as modifiers, BoxModifiers} from './modifiers';
 
 export type AstlyBoxProps = {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ export type AstlyBoxProps = {
 
 export type BoxProps = BaseBoxProps & AstlyBoxProps;
 
-function Box(props: BoxProps) {
+export function Box(props: BoxProps) {
   return <StyledBox {...props} />;
 }
 
@@ -25,5 +25,3 @@ const StyledBox: React.FunctionComponent<BoxProps> = styled[
   ${modifiers};
   ${styles};
 `;
-
-export default Box;

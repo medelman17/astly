@@ -9,10 +9,13 @@ export type AstlyBoxProps = {
   children: React.ReactNode;
   style?: string | object;
   variant?: BoxVariants;
-  modifiers: BoxModifiers;
+  modifiers?: BoxModifiers;
 };
 
-export type BoxProps = BaseBoxProps & AstlyBoxProps;
+export type BoxProps = BaseBoxProps & AstlyBoxProps & typeof defaultProps;
+const defaultProps = {
+  variant: 'normal',
+};
 
 export function Box(props: BoxProps) {
   return <StyledBox {...props} />;
@@ -26,3 +29,5 @@ const StyledBox: React.FunctionComponent<BoxProps> = styled[
   ${modifiers};
   ${styles};
 `;
+
+Box.defaultProps = defaultProps;

@@ -1,5 +1,5 @@
 {
-  "name": "playroom",
+  "name": "@astly/playroom",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
@@ -7,7 +7,7 @@
     "build": "yarn playroom:build",
     "playroom:start": "IS_NATIVE=FALSE NODE_OPTIONS='--max-old-space-size=4096' playroom start",
     "playroom:build": "IS_NATIVE=FALSE playroom build",
-    "types": "tsc -p tsconfig.json"
+    "types": "tsc -p tsconfig.json ./lib/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
@@ -39,7 +39,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@astly/components": "*",
+    "@astly/components": "0.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^5.0.0-rc.2",

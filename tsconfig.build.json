@@ -12,5 +12,5 @@
     "types": []
   },
 
-  "exclude": ["node_modules", "dist", "**/*.spec.ts", "../../node_modules"]
+  "exclude": ["node_modules", "build", "**/*.spec.ts", "../../node_modules"]
 }

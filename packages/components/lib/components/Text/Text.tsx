@@ -9,12 +9,16 @@ import cleanTextProps from '../../cleaners/cleanTextProps';
 export type AstlyTextProps = {
   children: React.ReactNode;
   style?: string | object;
+  /** string to format overall style of resulting Text component (e.g., 'h1', 'body', etc)*/
   variant?: TextVariants;
-  modifiers: TextModifiers;
+  /** string or array of strings to take fine-grained control of styled (e.g., 'strike', 'underline') */
+  modifiers?: TextModifiers;
 };
 
-export type TextProps = BaseTextProps & AstlyTextProps;
-
+export type TextProps = BaseTextProps & AstlyTextProps & typeof defaultProps;
+const defaultProps = {
+  variant: 'body',
+};
 export function Text(props: TextProps) {
   return <StyledText {...cleanTextProps(props)}>{props.children}</StyledText>;
 }
@@ -27,3 +31,5 @@ const StyledText: React.FunctionComponent<TextProps> = styled[
   ${modifiers};
   ${styles};
 `;
+
+Text.defaultProps = defaultProps;

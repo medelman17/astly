@@ -14,7 +14,10 @@ export type AstlyFlexProps = {
   modifiers?: FlexModifiers;
 };
 
-export type FlexProps = BaseFlexProps & AstlyFlexProps;
+export type FlexProps = BaseFlexProps & AstlyFlexProps & typeof defaultProps;
+const defaultProps = {
+  variant: isDomAvailable ? 'row' : 'column',
+};
 
 export function Flex(props: FlexProps) {
   const {children} = props;
@@ -29,6 +32,4 @@ const StyledFlex: React.FunctionComponent<FlexProps> = styled(Box)<FlexProps>`
   ${styles}
 `;
 
-Flex.defaultProps = {
-  variant: isDomAvailable ? 'row' : 'column',
-};
+Flex.defaultProps = defaultProps;

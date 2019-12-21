@@ -36,7 +36,7 @@ React.useEffect(() => {
 </>`;
 
 module.exports = {
-  components: './src/components.tsx',
+  components: './src/components.ts',
   outputPath: './public',
 
   // Optional:
@@ -46,12 +46,7 @@ module.exports = {
   widths: [375, 500],
   port: 9000,
   openBrowser: false,
-
-  typeScriptFiles: ['**/*.{ts,tsx}', '!**/node_modules'],
-  typeDeclarations: [
-    '@types/**/*.d.ts',
-    'node_modules/@astly/components/build/**/*.d.ts',
-  ],
+  typeDeclarations: ['@astly/components/**/*.d.ts'],
   webpackConfig: () => ({
     // Custom webpack config goes here...
     resolve: {

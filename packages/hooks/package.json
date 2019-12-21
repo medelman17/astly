@@ -8,7 +8,7 @@
   "module": "build/index.es.js",
   "react-native": "build/index.native.js",
   "jsnext:main": "build/index.es.js",
-  "types": "dist/index",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],

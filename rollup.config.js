@@ -7,15 +7,12 @@ export default {
   input: 'lib/index.ts',
   plugins: [
     external(),
-    resolve({
-      customResolveOptions: {
-        moduleDirectory: ['node_modules', '../../node_modules'],
-      },
-    }),
+    resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
       exclude: '**/__tests__/**',
       clean: true,
+      typescript: require('typescript'),
     }),
     commonjs({
       include: ['node_modules/**', '../../node_modules/**'],

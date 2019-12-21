@@ -9,10 +9,13 @@
   "module": "build/index.es.js",
   "react-native": "build/index.native.js",
   "jsnext:main": "build/index.es.js",
-  "types": "dist/index",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "build": "yarn clean && concurrently yarn:build-*",
     "build-web": "rollup -c",
@@ -33,11 +36,14 @@
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-native": "0.62.0-rc.0",
     "styled-components": "^5.0.0-rc.2"
   },
-  "devDependencies": {
+  "dependencies": {
     "@astly/helpers": "*",
-    "@astly/hooks": "*",
+    "@astly/hooks": "*"
+  },
+  "devDependencies": {
     "@styled-system/background": "^5.1.2",
     "@styled-system/border": "^5.1.2",
     "@styled-system/color": "^5.1.2",
@@ -51,11 +57,10 @@
     "@styled-system/space": "^5.1.2",
     "@styled-system/typography": "^5.1.2",
     "@styled-system/variant": "^5.1.4",
-    "@types/node": "^12.12.21",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-is": "^16.12.0",
-    "react-native": "^0.61.5",
+    "react-native": "0.62.0-rc.0",
     "react-native-web": "^0.11.7",
     "rollup-plugin-size-snapshot": "^0.10.0",
     "styled-components": "^5.0.0-rc.2",

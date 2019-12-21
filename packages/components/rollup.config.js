@@ -48,7 +48,12 @@ const config = {
   input: 'lib/index.ts',
   output,
   plugins: [...plugins, ...common.plugins, sizeSnapshot()],
-  external: ['react', 'react-dom'],
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {}),
+    'react-native',
+    'react-native-web',
+  ],
 };
 
 export default Object.assign(common, config);

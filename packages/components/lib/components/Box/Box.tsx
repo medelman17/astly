@@ -17,8 +17,9 @@ export type BoxProps = BaseBoxProps & AstlyBoxProps;
 export function Box(props: BoxProps) {
   return <StyledBox {...props} />;
 }
-
+//@ts-ignore
 const StyledBox: React.FunctionComponent<BoxProps> = styled[
+  //@ts-ignore
   isDomAvailable ? 'div' : 'View'
 ]<BoxProps>`
   ${variants};

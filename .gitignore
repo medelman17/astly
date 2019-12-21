@@ -4,4 +4,6 @@ results
 .nyc_output
 *.tsbuildinfo
 build
-.size-snapshot.json
+*.d.ts
+.DS_Store
+yarn-error.log

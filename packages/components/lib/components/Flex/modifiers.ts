@@ -1,4 +1,5 @@
 import {applyStyleModifiers} from 'styled-components-modifiers';
+import {FlexProps} from './Flex';
 
 export type FlexModifiers =
   | 'normal'
@@ -7,14 +8,14 @@ export type FlexModifiers =
   | 'vertical-stack';
 
 const flexModifiersConfig = {
-  'stretch-all': props => {
+  'stretch-all': (props: FlexProps) => {
     return `
         & > .flex-item {
             background-color: blue;
             flex-grow: 1;
         }`;
   },
-  'horizontal-bars': props => {
+  'horizontal-bars': (props: FlexProps) => {
     return `
         justify-content: space-between; 
         flex-direction: column; 
@@ -25,7 +26,7 @@ const flexModifiersConfig = {
         }
       `;
   },
-  'vertical-bars': props => {
+  'vertical-bars': (props: FlexProps) => {
     return `
     display: flex;
     justify-content: space-around;
@@ -36,7 +37,7 @@ const flexModifiersConfig = {
         }
       `;
   },
-  'vertical-stack': props => {
+  'vertical-stack': (props: FlexProps) => {
     return `
         display: flex;
         flex-direction: column;
@@ -48,7 +49,7 @@ const flexModifiersConfig = {
       
       `;
   },
-  wrap: props => `flex-wrap: wrap;`,
+  wrap: (props: FlexProps) => `flex-wrap: wrap;`,
 };
 
 export const flexModifiers = applyStyleModifiers(flexModifiersConfig);

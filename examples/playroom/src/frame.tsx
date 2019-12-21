@@ -1,7 +1,9 @@
 import * as React from 'react';
+import {withRoot} from '@astly/components';
 
-const Frame = props => {
+const Frame = (props: any) => {
+  console.log(props);
   return props.children;
 };
 
-export default Frame;
+export default withRoot(Frame);

@@ -18,8 +18,9 @@ export type TextProps = BaseTextProps & AstlyTextProps;
 export function Text(props: TextProps) {
   return <StyledText {...cleanTextProps(props)}>{props.children}</StyledText>;
 }
-
+//@ts-ignore
 const StyledText: React.FunctionComponent<TextProps> = styled[
+  //@ts-ignore
   isDomAvailable ? 'span' : 'Text'
 ]<TextProps>`
   ${variants};

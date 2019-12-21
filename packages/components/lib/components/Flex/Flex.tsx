@@ -27,9 +27,6 @@ const StyledFlex: React.FunctionComponent<FlexProps> = styled(Box)<FlexProps>`
   ${variants}
   ${modifiers}
   ${styles}
-  & > .flex-item {
-    background-color: orange
-  }
 `;
 
 Flex.defaultProps = {

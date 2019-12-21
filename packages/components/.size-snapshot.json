@@ -1,25 +1,25 @@
 {
   "build/index.native.js": {
-    "bundled": 108636,
-    "minified": 44821,
-    "gzipped": 11641
+    "bundled": 162648,
+    "minified": 75220,
+    "gzipped": 21681
   },
   "build/index.js": {
-    "bundled": 108629,
-    "minified": 44814,
-    "gzipped": 11634
+    "bundled": 162592,
+    "minified": 75206,
+    "gzipped": 21674
   },
   "build/index.es.js": {
-    "bundled": 108403,
-    "minified": 45446,
-    "gzipped": 12062,
+    "bundled": 162228,
+    "minified": 75709,
+    "gzipped": 22115,
     "treeshaked": {
       "rollup": {
-        "code": 33389,
-        "import_statements": 71
+        "code": 38692,
+        "import_statements": 172
       },
       "webpack": {
-        "code": 33636
+        "code": 40157
       }
     }
   }

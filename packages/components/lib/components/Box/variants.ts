@@ -1,4 +1,4 @@
-import {variant} from '@styled-system/variant';
+import {variant} from 'styled-system';
 
 export type BoxVariants = 'normal';
 

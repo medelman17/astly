@@ -1,6 +1,6 @@
 import {findAndParseIncognitoNumbers} from '@astly/helpers';
-
-function cleanTextProps(props) {
+import {TextProps} from '../components/Text/Text';
+function cleanTextProps(props: TextProps) {
   let {style} = props;
 
   return {

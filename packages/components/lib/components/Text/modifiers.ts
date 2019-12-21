@@ -1,20 +1,21 @@
 import {applyStyleModifiers} from 'styled-components-modifiers';
+import {TextProps} from './Text';
 
 export type TextModifiers = 'italic' | 'bold' | 'underlined' | 'strike';
 
 const textModifiersConfig = {
-  bold: props => {
+  bold: (props: TextProps) => {
     return `
             font-weight: 700;
         `;
   },
-  italic: props => {
+  italic: (props: TextProps) => {
     return `
             font-style: italic;
         `;
   },
-  underlined: props => `text-decoration: underline;`,
-  strike: props => {
+  underlined: (props: TextProps) => `text-decoration: underline;`,
+  strike: (props: TextProps) => {
     return `
         text-decoration: line-through;
     `;

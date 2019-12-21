@@ -6,16 +6,21 @@
   "repository": "git@github.com:fabulascode/astly.git",
   "author": "Michael Edelman <michael@fabulas.io>",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ]
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "clean": "lerna run clean",
     "build": "lerna run build",
+    "clean": "lerna run clean",
+    "publish-canary": "lerna publish --canary --yes",
+    "publish-next": "lerna publish --npm-tag=next --bump=prerelease",
     "pub": "lerna publish",
-    "start": "lerna run start"
+    "start": "lerna run start",
+    "ios": "yarn workspace astlyshowcase ios"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^2.2.0",
@@ -26,6 +31,7 @@
     "@types/react-native": "^0.60.25",
     "@types/styled-components": "^4.4.1",
     "@types/styled-system": "^5.1.4",
+    "@types/node": "^12.12.21",
     "awesome-typescript-loader": "^5.2.1",
     "concurrently": "^5.0.2",
     "jest": "^24.9.0",

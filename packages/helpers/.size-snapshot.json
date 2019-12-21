@@ -1,0 +1,26 @@
+{
+  "build/index.native.js": {
+    "bundled": 9438,
+    "minified": 4599,
+    "gzipped": 1794
+  },
+  "build/index.js": {
+    "bundled": 9438,
+    "minified": 4599,
+    "gzipped": 1794
+  },
+  "build/index.es.js": {
+    "bundled": 9198,
+    "minified": 4381,
+    "gzipped": 1733,
+    "treeshaked": {
+      "rollup": {
+        "code": 747,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 1828
+      }
+    }
+  }
+}

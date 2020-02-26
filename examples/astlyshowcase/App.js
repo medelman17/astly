@@ -23,7 +23,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {Box, Text} from '@astly/components';
+import {Box, Text, AstlyProvider} from '@astly/components';
 
 const App = () => {
   return (
@@ -33,14 +33,10 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <Box bg="blue">
-            <Text>Hi</Text>
+          <Box style={styles.body}>
+            <Text variant="h1">Mike</Text>
+            <Text variant="h2">Mike</Text>
+            <Text variant="body">Hello</Text>
           </Box>
           <View style={styles.body} />
         </ScrollView>
@@ -88,4 +84,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default () => (
+  <AstlyProvider theme={{colors: {blue: 'hotpink'}}}>
+    <App />
+  </AstlyProvider>
+);

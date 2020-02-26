@@ -13,17 +13,13 @@ const plugins = isNative
         'styled-components': 'styled-components/native',
       }),
     ]
-  : [
-      replace({
-        'react-native': 'react-native-web',
-      }),
-    ];
+  : [];
 
 const output = isNative
   ? [
       {
         file: pkg['react-native'],
-        format: 'cjs',
+        format: 'esm',
         exports: 'named',
         sourcemap: true,
       },
@@ -37,7 +33,7 @@ const output = isNative
       },
       {
         file: pkg.module,
-        format: 'es',
+        format: 'esm',
         exports: 'named',
         sourcemap: true,
       },
@@ -47,6 +43,12 @@ const config = {
   input: 'lib/index.ts',
   output,
   plugins: [...plugins, ...common.plugins, sizeSnapshot()],
+  external: [
+    // ...Object.keys(pkg.dependencies || {}),
+    // ...Object.keys(pkg.peerDependencies || {}),
+    'react-native',
+    'react-native-web',
+  ],
 };
 
 export default Object.assign(common, config);

@@ -1,3 +1,1 @@
-export default {};
-
-export const mike = 1;
+export {parseHtml} from './parseHtml';

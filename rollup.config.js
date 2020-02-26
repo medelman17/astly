@@ -1,18 +1,17 @@
-import typescript from 'rollup-plugin-typescript2';
+import typescript from '@wessberg/rollup-plugin-ts';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
+import json from 'rollup-plugin-json';
 
 export default {
   input: 'lib/index.ts',
   plugins: [
+    json(),
     external(),
     resolve(),
     typescript({
-      rollupCommonJSResolveHack: true,
-      exclude: '**/__tests__/**',
-      clean: true,
-      typescript: require('typescript'),
+      transformers: [],
     }),
     commonjs({
       include: ['node_modules/**', '../../node_modules/**'],

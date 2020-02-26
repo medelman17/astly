@@ -28,7 +28,7 @@
     "css-loader": "^3.2.1",
     "file-loader": "^5.0.2",
     "node-sass": "^4.13.0",
-    "playroom": "https://github.com/nksaraf/playroom",
+    "playroom": "^0.14.2",
     "sass-loader": "^8.0.0",
     "scss-loader": "^0.0.1",
     "serve": "^11.2.0",
@@ -40,8 +40,10 @@
   },
   "dependencies": {
     "@astly/components": "0.0.1",
+    "@astly/themes": "0.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-native-typography": "^1.4.1",
     "styled-components": "^5.0.0-rc.2",
     "styled-system": "^5.1.4"
   }

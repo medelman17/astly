@@ -1,9 +1,13 @@
 {
   "name": "@astly/helpers",
   "version": "0.0.1",
-  "license": "GPLv3",
+  "license": "MIT",
   "repository": "git@github.com:fabulascode/astly.git",
-  "author": "Michael Edelman <michael@fabulas.io>",
+  "author": {
+    "name": "Michael Edelman",
+    "email": "michael@fabulas.io",
+    "url": "https://twitter.com/edelman215"
+  },
   "main": "build/index.js",
   "module": "build/index.es.js",
   "react-native": "build/index.native.js",

@@ -7,3 +7,5 @@ build
 *.d.ts
 .DS_Store
 yarn-error.log
+coverage
+settings.json

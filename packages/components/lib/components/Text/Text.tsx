@@ -1,10 +1,15 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import {isDomAvailable} from '@astly/helpers';
 import styles, {BaseTextProps} from './styles';
 import variants, {TextVariants} from './variants';
 import modifiers, {TextModifiers} from './modifiers';
 import cleanTextProps from '../../cleaners/cleanTextProps';
+/*#if _NATIVE
+import styled from 'styled-components/native'
+const isNative = true; 
+//#else */
+import styled from 'styled-components';
+const isNative = false;
+//#endif
 
 export type AstlyTextProps = {
   children: React.ReactNode;
@@ -13,6 +18,7 @@ export type AstlyTextProps = {
   variant?: TextVariants;
   /** string or array of strings to take fine-grained control of styled (e.g., 'strike', 'underline') */
   modifiers?: TextModifiers;
+  as?: string;
 };
 
 export type TextProps = BaseTextProps & AstlyTextProps & typeof defaultProps;
@@ -25,7 +31,7 @@ export function Text(props: TextProps) {
 //@ts-ignore
 const StyledText: React.FunctionComponent<TextProps> = styled[
   //@ts-ignore
-  isDomAvailable ? 'span' : 'Text'
+  isNative ? 'Text' : 'span'
 ]<TextProps>`
   ${variants};
   ${modifiers};

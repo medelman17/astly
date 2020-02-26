@@ -1,11 +1,16 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import {isDomAvailable} from '@astly/helpers';
 import {styles, BaseFlexProps} from './styles';
 import {flexVariants as variants, FlexVariants} from './variants';
 import {flexModifiers as modifiers, FlexModifiers} from './modifiers';
 import {Box} from '../Box/Box';
 import {useBrandedChildren} from '@astly/hooks';
+/*#if _NATIVE
+import styled from 'styled-components/native'
+const isNative = true; 
+//#else */
+import styled from 'styled-components';
+const isNative = false;
+//#endif
 
 export type AstlyFlexProps = {
   children: React.ReactNode;
@@ -16,7 +21,7 @@ export type AstlyFlexProps = {
 
 export type FlexProps = BaseFlexProps & AstlyFlexProps & typeof defaultProps;
 const defaultProps = {
-  variant: isDomAvailable ? 'row' : 'column',
+  variant: isNative ? 'row' : 'column',
 };
 
 export function Flex(props: FlexProps) {

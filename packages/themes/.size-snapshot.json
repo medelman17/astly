@@ -1,25 +1,34 @@
 {
   "build/index.native.js": {
-    "bundled": 59897,
-    "minified": 32656,
-    "gzipped": 10474
-  },
-  "build/index.js": {
-    "bundled": 59848,
-    "minified": 32649,
-    "gzipped": 10470
-  },
-  "build/index.es.js": {
-    "bundled": 59758,
-    "minified": 32568,
-    "gzipped": 10428,
+    "bundled": 55020,
+    "minified": 30914,
+    "gzipped": 10009,
     "treeshaked": {
       "rollup": {
-        "code": 8756,
+        "code": 7420,
         "import_statements": 0
       },
       "webpack": {
-        "code": 10004
+        "code": 8698
+      }
+    }
+  },
+  "build/index.js": {
+    "bundled": 55068,
+    "minified": 30988,
+    "gzipped": 10046
+  },
+  "build/index.es.js": {
+    "bundled": 54978,
+    "minified": 30907,
+    "gzipped": 10005,
+    "treeshaked": {
+      "rollup": {
+        "code": 7420,
+        "import_statements": 0
+      },
+      "webpack": {
+        "code": 8698
       }
     }
   }

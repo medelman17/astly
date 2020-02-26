@@ -9,7 +9,7 @@
   "module": "build/index.es.js",
   "react-native": "build/index.native.js",
   "jsnext:main": "build/index.es.js",
-  "types": "build/astly.d.ts",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
@@ -20,7 +20,6 @@
     "build": "yarn clean && concurrently yarn:build-*",
     "build-web": "rollup -c",
     "build-native": "IS_NATIVE=true rollup -c",
-    "postbuild": "dts-bundle-generator -o build/astly.d.ts --no-check build/index.ts",
     "clean": "rm -rf ./dist",
     "compile": "tsc -p tsconfig.build.json ",
     "prepublishOnly": "yarn build",
@@ -42,27 +41,12 @@
   },
   "dependencies": {
     "@astly/helpers": "*",
-    "@astly/hooks": "*"
+    "@astly/hooks": "*",
+    "@astly/themes": "*",
+    "styled-system": "^5.1.4",
+    "styled-components-modifiers": "^1.2.5"
   },
   "devDependencies": {
-    "@styled-system/background": "^5.1.2",
-    "@styled-system/border": "^5.1.2",
-    "@styled-system/color": "^5.1.2",
-    "@styled-system/flexbox": "^5.1.2",
-    "@styled-system/grid": "^5.1.2",
-    "@styled-system/layout": "^5.1.2",
-    "@styled-system/position": "^5.1.2",
-    "@styled-system/props": "^5.1.4",
-    "@styled-system/shadow": "^5.1.2",
-    "@styled-system/should-forward-prop": "^5.1.4",
-    "@styled-system/space": "^5.1.2",
-    "@styled-system/typography": "^5.1.2",
-    "@styled-system/variant": "^5.1.4",
-    "dts-bundle": "^0.7.3",
-    "dts-bundle-generator": "^3.3.1",
-    "dts-gen": "^0.6.0",
-    "dts-generator": "^3.0.0",
-    "npm-dts": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-is": "^16.12.0",
@@ -70,8 +54,6 @@
     "react-native-web": "^0.11.7",
     "rollup-plugin-size-snapshot": "^0.10.0",
     "styled-components": "^5.0.0-rc.2",
-    "styled-components-modifiers": "^1.2.5",
-    "styled-system": "^5.1.4",
     "typescript": "^3.7.3"
   }
 }

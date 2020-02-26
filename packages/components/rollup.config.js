@@ -2,6 +2,7 @@ import pkg from './package.json';
 import common from '../../rollup.config.js';
 import replace from '@rollup/plugin-replace';
 import {sizeSnapshot} from 'rollup-plugin-size-snapshot';
+import jscc from 'rollup-plugin-jscc';
 
 const isNative =
   typeof process.env.IS_NATIVE !== 'undefined' &&
@@ -9,12 +10,23 @@ const isNative =
 
 const plugins = isNative
   ? [
-      replace({
-        'styled-components': 'styled-components/native',
-        exclude: 'lib/**/modifiers.ts',
+      jscc({
+        values: {
+          _NATIVE: 1,
+        },
       }),
+      // replace({
+      //   'styled-components': 'styled-components/native',
+
+      //   exclude: 'lib/**/modifiers.ts',
+      // }),
     ]
   : [
+      jscc({
+        values: {
+          _NATIVE: 0,
+        },
+      }),
       replace({
         'react-native': 'react-native-web',
       }),
@@ -24,7 +36,7 @@ const output = isNative
   ? [
       {
         file: pkg['react-native'],
-        format: 'cjs',
+        format: 'esm',
         exports: 'named',
         sourcemap: true,
       },
@@ -32,13 +44,13 @@ const output = isNative
   : [
       {
         file: pkg.main,
-        format: 'cjs',
+        format: 'esm',
         exports: 'named',
         sourcemap: true,
       },
       {
         file: pkg.module,
-        format: 'es',
+        format: 'esm',
         exports: 'named',
         sourcemap: true,
       },

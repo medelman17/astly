@@ -6,6 +6,8 @@
     "target": "es5",
     "jsx": "react",
     "declaration": true,
+    "declarationDir": "./build",
+    "declarationMap": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
@@ -17,5 +19,5 @@
   },
   "exclude": ["node_modules", "build", "**/__tests__/**"],
 
-  "include": ["lib"]
+  "include": ["lib/**/*"]
 }

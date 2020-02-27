@@ -1,47 +1,41 @@
 {
-  "name": "@fabulas/themes",
-  "version": "0.0.5",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "license": "MIT",
-  "private": false,
-  "author": "Michael Jopseph Edelman <michael@fabulas.io>",
-  "main": "dist/build.js",
-  "react-native": "dist/build.native.js",
-  "directories": {
-    "lib": "lib",
-    "dist": "dist",
-    "test": "__tests__"
-  },
+  "name": "@astly/themes",
+  "version": "0.0.1",
+  "license": "GPLv3",
+  "repository": "git@github.com:fabulascode/astly.git",
+  "author": "Michael Edelman <michael@fabulas.io>",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "react-native": "build/index.native.js",
+  "jsnext:main": "build/index.es.js",
+  "types": "build/index.d.ts",
   "files": [
-    "lib",
-    "dist"
+    "build"
   ],
   "scripts": {
-    "test": "jest",
-    "build": "webpack --config ./webpack.config.js --env.env=prod",
-    "build:clean": "rm -rf ./dist",
-    "predev": "npm run build:clean && yarn postbuild",
-    "dev": "webpack --watch --mode development --config ./webpack.config.js --env.env=dev",
-    "profile": "webpack --mode production --profile --json --env.env=prod > stats.json",
-    "prebuild": "npm run build:clean",
-    "postbuild": "./scripts/postbuild/postbuild.sh"
+    "build": "yarn clean && concurrently yarn:build-*",
+    "build-web": "rollup -c",
+    "build-native": "IS_NATIVE=true rollup -c",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "yarn build",
+    "start": "tsc -w",
+    "watch": "yarn clean && concurrently yarn:watch-*",
+    "watch-web": "rollup -c --watch",
+    "watch-native": "IS_NATIVE=true rollup -c --watch"
   },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-react": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-macros": "^2.7.1",
-    "jest": "^24.9.0",
+    "deep-merge": "^1.0.0",
+    "opentype.js": "^1.1.0",
     "pluralize": "^8.0.0",
     "polished": "^3.4.2",
     "react-native-typography": "^1.4.1",
-    "styled-system": "^5.1.2",
-    "typography": "^0.16.19",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "typescript": "^3.7.3",
+    "typography": "^0.16.19"
   }
 }

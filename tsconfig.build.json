@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esNext",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "lib": ["dom", "esnext"],
+    "types": []
+  },
+
+  "exclude": ["node_modules", "build", "**/*.spec.ts", "../../node_modules"]
+}

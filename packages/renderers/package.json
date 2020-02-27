@@ -1,0 +1,31 @@
+{
+  "name": "@astly/renderers",
+  "version": "0.0.1",
+  "license": "GPLv3",
+  "repository": "git@github.com:fabulascode/astly.git",
+  "author": "Michael Edelman <michael@fabulas.io>",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "react-native": "build/index.native.js",
+  "jsnext:main": "build/index.es.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "yarn clean && concurrently yarn:build-*",
+    "build-web": "rollup -c",
+    "build-native": "IS_NATIVE=true rollup -c",
+    "clean": "rm -rf ./dist",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build",
+    "start": "tsc -w"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.3"
+  }
+}

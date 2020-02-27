@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react",
+    "declaration": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "lib": ["es2016", "DOM", "es5"],
+    "types": ["node"]
+  },
+  "exclude": ["node_modules", "build", "**/__tests__/**"],
+
+  "include": ["lib"]
+}

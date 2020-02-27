@@ -1,38 +1,50 @@
 {
-  "name": "playroom",
+  "name": "@astly/playroom",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "yarn playroom:build",
     "playroom:start": "IS_NATIVE=FALSE NODE_OPTIONS='--max-old-space-size=4096' playroom start",
-    "playroom:build": "playroom build"
+    "playroom:build": "IS_NATIVE=FALSE playroom build",
+    "types": "tsc -p tsconfig.json ./lib/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.3",
     "@babel/preset-react": "^7.7.3",
     "@babel/preset-typescript": "^7.7.4",
+    "@babel/runtime": "^7.7.4",
+    "@now/node": "^1.2.0",
+    "@types/react": "^16.9.14",
+    "@types/styled-components": "^4.4.0",
+    "@types/styled-system": "^5.1.4",
     "babel-loader": "^8.0.6",
-    "css-loader": "^3.2.0",
+    "css-loader": "^3.2.1",
     "file-loader": "^5.0.2",
     "node-sass": "^4.13.0",
-    "playroom": "https://github.com/nksaraf/playroom",
+    "playroom": "^0.14.2",
     "sass-loader": "^8.0.0",
     "scss-loader": "^0.0.1",
     "serve": "^11.2.0",
-    "style-loader": "^1.0.0",
+    "style-loader": "^1.0.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@fabulas/astly": "*",
-    "@fabulas/themes": "^0.0.4",
+    "@astly/components": "0.0.1",
+    "@astly/themes": "0.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^5.0.0-rc.2"
+    "react-native-typography": "^1.4.1",
+    "styled-components": "^5.0.0-rc.2",
+    "styled-system": "^5.1.4"
   }
 }

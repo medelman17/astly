@@ -10,15 +10,17 @@ import {
   handleImages,
   handleLinks,
   handleText,
+  handleMisc,
 } from './transformers';
 
-export const parseHtml = (options: AstlyHtmlParserOptions) =>
-  unified()
+export const parseHtml = (options: AstlyHtmlParserOptions) => {
+  return unified()
     .use(parse)
     .use(handleStyleTags(options))
     .use(handleImages(options))
     .use(handleText(options))
     .use(handleLinks(options))
+    .use(handleMisc(options))
     .use(minifyWhitespace)
     .use(toReact, {
       components: options.components,
@@ -26,3 +28,4 @@ export const parseHtml = (options: AstlyHtmlParserOptions) =>
       createElement: React.createElement,
     })
     .data('settings', {fragment: true});
+};

@@ -1,7 +1,8 @@
 import pkg from './package.json';
 import common from '../../rollup.config.js';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
-
+import {sizeSnapshot} from 'rollup-plugin-size-snapshot';
+import {terser} from 'rollup-plugin-terser';
 const isNative =
   typeof process.env.IS_NATIVE !== 'undefined' &&
   process.env.IS_NATIVE === 'true';
@@ -35,10 +36,11 @@ const output = isNative
 const config = {
   input: 'lib/index.ts',
   output,
-  plugins: [...plugins, ...common.plugins],
+  plugins: [...plugins, ...common.plugins, sizeSnapshot(), terser()],
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
+    'react',
     'react-native',
     'react-native-web',
   ],

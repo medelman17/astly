@@ -14,7 +14,7 @@ export default {
       transformers: [],
     }),
     commonjs({
-      include: ['node_modules/**', '../../node_modules/**'],
+      include: /node_modules/,
       namedExports: {
         'styled-components-modifiers': ['applyStyleModifiers'],
       },

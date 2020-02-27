@@ -5,12 +5,24 @@ import {VFile} from 'vfile';
 import {Root} from 'postcss';
 export {VFile, Root};
 
+export type AstlyTextTransformOptions = {
+  wrapImplicitParagraphs?: boolean;
+  wrapImplicitParagraphsWith?: string;
+};
+
+export type AstlyHtmlElementTransformOptions = {
+  transformDataAttributesToProps?: boolean;
+  transformDataAttributesToPropsElements?: string[];
+};
+
 export type AstlyComponentMap = {
   [index: string]: React.ElementType<any>;
 };
 
 export type AstlyHtmlParserOptions = {
   components: AstlyComponentMap;
+  html?: AstlyHtmlElementTransformOptions;
+  text?: AstlyTextTransformOptions;
   tools?: {
     onClick: (node: AstlyHastNode, bag: {isNative: boolean}) => void;
     navigate: (node: AstlyHastNode, bag: {isNative: boolean}) => void;

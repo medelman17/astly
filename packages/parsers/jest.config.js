@@ -12,4 +12,5 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
+  collectCoverageFrom: ['lib/**/*.{ts,tsx}'],
 };

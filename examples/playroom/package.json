@@ -27,7 +27,7 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.1",
     "file-loader": "^5.0.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "playroom": "^0.14.2",
     "sass-loader": "^8.0.0",
     "scss-loader": "^0.0.1",
